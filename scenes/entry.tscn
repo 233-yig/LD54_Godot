@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://lnivnkqgp34l"]
+
+[ext_resource type="Script" path="res://gdscripts/entry.gd" id="1_f5uwp"]
+[ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level2.tres" id="3_qxxtg"]
+[ext_resource type="PackedScene" uid="uid://cept4tjtt7ud4" path="res://scenes/main_game.tscn" id="5_ywrxd"]
+
+[node name="entry" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5uwp")
+levels = Array[Resource]([ExtResource("3_qxxtg"), ExtResource("3_qxxtg")])
+
+[node name="camera" type="Camera2D" parent="."]
+
+[node name="ui" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="btnStart" type="Button" parent="ui"]
+layout_mode = 2
+text = "Start"
+
+[node name="MainGame" parent="." instance=ExtResource("5_ywrxd")]
+layout_mode = 1
+offset_left = -1576.78
+offset_top = -851.052
+offset_right = -1576.78
+offset_bottom = -851.052
+
+[connection signal="pressed" from="ui/btnStart" to="." method="NextLevel"]

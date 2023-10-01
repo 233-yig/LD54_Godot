@@ -1,0 +1,7 @@
+[configuration]
+entry_symbol = "gameplay_library_init"
+compatibility_minimum = 4.1
+
+[libraries]
+windows.debug.x86_32 = "res://bin/interface-godot_x86.dll"
+windows.debug.x86_64 = "res://bin/interface-godot_x64.dll"

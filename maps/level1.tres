@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bh42bi8uu7j3a"]
+
+[ext_resource type="Script" path="res://gdscripts/leveldata.gd" id="1_vvd24"]
+
+[resource]
+script = ExtResource("1_vvd24")
+startPos = Vector2i(0, 0)
+mapSize = Vector2i(8, 8)
+mineCount = 20
+mapStr = "
+00000000
+11111111
+eeeeeeee
+eeeeeeee
+eeeeeeee
+eeeeeeee
+11111111
+00000000
+"
