@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://dunglh8j30vyk"]
+
+[ext_resource type="Script" path="res://gdscripts/game_ui.gd" id="1_5cxdp"]
+[ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="2_l23ta"]
+[ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="3_b3rtq"]
+[ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/atlas/sir1.tres" id="3_flwmp"]
+[ext_resource type="Texture2D" uid="uid://cj4q5wa3kuwm1" path="res://resources/images/No.54.png" id="4_l3na8"]
+[ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="5_gji7s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_13yui"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnipu"]
+font_size = 25
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5cxdp")
+
+[node name="Dialog" type="Control" parent="."]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 800.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Dialog"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l23ta")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 225.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello World!"
+label_settings = SubResource("LabelSettings_13yui")
+
+[node name="Icon1" type="TextureRect" parent="Dialog"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+texture = ExtResource("3_flwmp")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Dialog"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 151.0
+offset_top = -201.0
+offset_right = 351.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_l3na8")
+expand_mode = 1
+
+[node name="Status" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 56.0
+
+[node name="Mines" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Mines"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("5_gji7s")
+region_rect = Rect2(0.397919, -0.795509, 53.5905, 52.8194)
+
+[node name="Label" type="Label" parent="Status/Mines"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
+
+[node name="Flips" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Flips"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("3_b3rtq")
+region_rect = Rect2(-5, -9, 50, 50)
+
+[node name="Label" type="Label" parent="Status/Flips"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
