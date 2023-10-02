@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Texture2D" uid="uid://deuhumjh7pet2" path="res://resources/grid.png" id="1_6as3l"]
-[ext_resource type="Script" path="res://main_game.gd" id="1_cvr5b"]
+[ext_resource type="Script" path="res://gdscripts/main_game.gd" id="1_efrql"]
 [ext_resource type="Texture2D" uid="uid://c3jffgokuj4xm" path="res://resources/m.png" id="2_b2h1y"]
 [ext_resource type="Texture2D" uid="uid://br4ngwvb254us" path="res://resources/0.png" id="2_ulhrw"]
 [ext_resource type="Texture2D" uid="uid://b5fakfkwduicy" path="res://resources/1.png" id="3_s7p5s"]
@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cvr5b")
+script = ExtResource("1_efrql")
 
 [node name="Background" type="NinePatchRect" parent="."]
 texture_filter = 1

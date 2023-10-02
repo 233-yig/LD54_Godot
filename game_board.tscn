@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd687pdepe4a6"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mhocp"]
-
-[node name="GameBoard" type="GameBoard"]
-tiles = Array[Texture2D]([SubResource("CompressedTexture2D_mhocp"), SubResource("CompressedTexture2D_mhocp"), null, null, null, null, null, null, null, null, null, null, null])
