@@ -1,39 +1,33 @@
 extends Control
 
 
-var pos: Vector2i
+
+@export var tile: Texture2D
 var mapSize: Vector2i
 func Start(param):
-	pos = param.startPos
-	mapSize = param.mapSize
-	$Background/GameBoard.load_data(
+	mapSize = param.mapSize;
+	self.custom_minimum_size = Vector2(mapSize.x - 1, mapSize.y - 1) * tile.get_size()
+	$GameBoard.load_data(
 		param.mapSize,
 		param.mineCount,
 		param.maxFlips,
 		param.mapStr
 	);
 
-func _unhandled_input(event):
-	if !(event is InputEventKey):
+func _input(event: InputEvent):
+	if !(event is InputEventMouse):
 		return
-	if !event.pressed:
+	#var mousePos: Vector2 = self.get_local_mouse_position();
+	var pos: Vector2i = self.get_local_mouse_position() / tile.get_size() + Vector2(0.5,0.5)
+	if pos.x < 0 || pos.x >= mapSize.x || pos.y < 0 || pos.y >= mapSize.y:
 		return
-	match(event.keycode):
-		KEY_LEFT:
-			if pos.x > 0 :
-				pos.x -= 1
-		KEY_RIGHT:
-			if pos.x < mapSize.x - 1 :
-				pos.x += 1
-		KEY_UP:
-			if pos.y > 0 :
-				pos.y -= 1
-		KEY_DOWN:
-			if pos.y < mapSize.y - 1 :
-				pos.y += 1
-		KEY_Z:
-			$Background/GameBoard.flip(pos);
-		KEY_X:
-			$Background/GameBoard.flag(pos);
-	var size:Vector2 = $Background/Cursor.texture.get_size()
-	$Background/Cursor.position = Vector2(pos.x * size.x, pos.y * size.y)
+	$Cursor.position = (Vector2(pos) - Vector2(0.5,0.5)) * tile.get_size();
+	if !(event is InputEventMouseButton):
+		return
+	var ret;
+	match(event.button_index):
+		MOUSE_BUTTON_LEFT:
+			ret = $GameBoard.flip(pos);
+		MOUSE_BUTTON_RIGHT:
+			ret = $GameBoard.flag(pos);
+	pass

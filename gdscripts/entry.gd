@@ -8,8 +8,8 @@ func Resume():
 
 func NextLevel():
 	var game:Node = scene.instantiate()
-	game.Start(levels[current])
 	add_child(game)
+	game.Start(levels[current])
 	game.tree_exited.connect(self.Resume)
 	$ui.visible = false
 	current += 1

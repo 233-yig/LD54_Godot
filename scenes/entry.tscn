@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://lnivnkqgp34l"]
 
 [ext_resource type="Script" path="res://gdscripts/entry.gd" id="1_f5uwp"]
-[ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level2.tres" id="3_qxxtg"]
+[ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="2_dd50v"]
 
 [node name="entry" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f5uwp")
-levels = Array[Resource]([ExtResource("3_qxxtg"), ExtResource("3_qxxtg")])
+levels = Array[Resource]([ExtResource("2_dd50v")])
 
 [node name="camera" type="Camera2D" parent="."]
 
