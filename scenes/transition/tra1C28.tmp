@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4sockfcqomsl"]
+
+[ext_resource type="Texture2D" uid="uid://dhc32wkkojv2k" path="res://resources/images/transition background.png" id="1_txken"]
+[ext_resource type="Texture2D" uid="uid://duykhalgymyca" path="res://resources/images/No.54_blink.png" id="2_7tc44"]
+
+[sub_resource type="GDScript" id="GDScript_2dhje"]
+script/source = "extends Timer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	print(timeout)
+	timeout.connect(queue_free)
+"
+
+[sub_resource type="GDScript" id="GDScript_rj1cl"]
+script/source = "extends TextureRect
+
+func _process(delta):
+	rotation += delta
+"
+
+[node name="Transition" type="Timer"]
+wait_time = 3.0
+script = SubResource("GDScript_2dhje")
+
+[node name="bg" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_txken")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="obj" type="TextureRect" parent="bg"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -225.0
+offset_right = 150.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(150, 225)
+texture = ExtResource("2_7tc44")
+expand_mode = 1
+script = SubResource("GDScript_rj1cl")

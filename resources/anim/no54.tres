@@ -1,0 +1,10 @@
+[gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://bnb07llv843rg"]
+
+[ext_resource type="Texture2D" uid="uid://ciw5tjy3to5ni" path="res://resources/images/No.54_idle.png" id="1_i4uxe"]
+[ext_resource type="Texture2D" uid="uid://duykhalgymyca" path="res://resources/images/No.54_blink.png" id="2_vtdo1"]
+
+[resource]
+frames = 2
+frame_0/texture = ExtResource("1_i4uxe")
+frame_1/texture = ExtResource("2_vtdo1")
+frame_1/duration = 0.25

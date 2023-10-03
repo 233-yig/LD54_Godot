@@ -1,10 +1,15 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bh42bi8uu7j3a"]
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bh42bi8uu7j3a"]
 
 [ext_resource type="Script" path="res://gdscripts/leveldata.gd" id="1_vvd24"]
 
 [resource]
 script = ExtResource("1_vvd24")
-mapSize = Vector2i(5, 5)
-mineCount = 5
-maxFlips = 15
-mapStr = "eeeeeeeeeeeeeeeeeeeeeeeee"
+mapSize = Vector2i(3, 3)
+mineCount = 2
+maxFlips = 4
+mapStr = "eee
+eee
+eee"
+win_dialog = ""
+lose_dialog = ""
+start_dialog = ""

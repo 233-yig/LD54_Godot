@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://dunglh8j30vyk"]
+
+[ext_resource type="Script" path="res://scenes/game/game_ui/game_ui.gd" id="1_507fy"]
+[ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/atlas/sir1.tres" id="2_g6pnl"]
+[ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="3_s17mv"]
+[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/anim/no54.tres" id="4_6yn34"]
+[ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="5_blxpx"]
+[ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="5_h6pnq"]
+[ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="6_jphcc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_13yui"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnipu"]
+font_size = 25
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_507fy")
+
+[node name="Sir" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Sir"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_g6pnl")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Sir"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_s17mv")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Sir/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello World!"
+label_settings = SubResource("LabelSettings_13yui")
+
+[node name="No_54" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -254.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="No_54"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_s17mv")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="No_54/TextureRect"]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 250.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello World!"
+label_settings = SubResource("LabelSettings_13yui")
+
+[node name="Icon" type="TextureRect" parent="No_54"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+texture = ExtResource("4_6yn34")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Placeholder" type="TextureRect" parent="No_54"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("5_blxpx")
+expand_mode = 1
+
+[node name="Status" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 56.0
+
+[node name="Mines" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Mines"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("5_h6pnq")
+region_rect = Rect2(0.397919, -0.795509, 53.5905, 52.8194)
+
+[node name="Label" type="Label" parent="Status/Mines"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
+
+[node name="Flips" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Flips"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("6_jphcc")
+region_rect = Rect2(-5, -9, 50, 50)
+
+[node name="Label" type="Label" parent="Status/Flips"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")

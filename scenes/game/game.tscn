@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://cept4tjtt7ud4"]
+
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
+[ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="2_b1o3m"]
+[ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/anim/bg.tres" id="3_b2ack"]
+[ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
+[ext_resource type="Texture2D" uid="uid://codyykf53dgsb" path="res://resources/images/spaces.png" id="4_jkekv"]
+[ext_resource type="Resource" uid="uid://wiprfp4c4gfu" path="res://maps/level2.tres" id="4_t1ipk"]
+[ext_resource type="Texture2D" uid="uid://bcdnby3uml38l" path="res://resources/images/mapbox.png" id="5_3ddht"]
+[ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
+[ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="6_qau1f"]
+[ext_resource type="Texture2D" uid="uid://b3qe3ipeqfg3w" path="res://resources/images/2.png" id="7_373mj"]
+[ext_resource type="Texture2D" uid="uid://d2c0n6m5tlt6w" path="res://resources/images/3.png" id="8_a5xl0"]
+[ext_resource type="Texture2D" uid="uid://bin0k53r8odcj" path="res://resources/images/4.png" id="9_waelt"]
+[ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="10_vnr8u"]
+[ext_resource type="Texture2D" uid="uid://qcoad87gbwo6" path="res://resources/images/locater.png" id="11_p2gdg"]
+[ext_resource type="Texture2D" uid="uid://cj4q5wa3kuwm1" path="res://resources/images/No.54.png" id="12_r1682"]
+[ext_resource type="PackedScene" uid="uid://dunglh8j30vyk" path="res://scenes/game/game_ui/game_ui.tscn" id="13_af7bk"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g1p6r")
+levels = Array[Resource("res://gdscripts/leveldata.gd")]([ExtResource("3_sap3j"), ExtResource("4_t1ipk"), ExtResource("5_sl4aa")])
+
+[node name="Bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_b2ack")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="MainGame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="MainGame"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_jkekv")
+region_rect = Rect2(0, 0, 306, 300)
+patch_margin_left = 102
+patch_margin_top = 100
+patch_margin_right = 102
+patch_margin_bottom = 100
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Boundary" type="TextureRect" parent="MainGame"]
+texture_filter = 1
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3ddht")
+expand_mode = 1
+
+[node name="GameBoard" type="GameBoard" parent="MainGame"]
+tiles = [ExtResource("2_b1o3m"), ExtResource("6_qau1f"), ExtResource("7_373mj"), ExtResource("8_a5xl0"), ExtResource("9_waelt"), ExtResource("9_waelt"), ExtResource("9_waelt"), ExtResource("9_waelt"), ExtResource("9_waelt"), ExtResource("10_vnr8u"), ExtResource("11_p2gdg"), ExtResource("10_vnr8u"), ExtResource("10_vnr8u"), ExtResource("10_vnr8u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+
+[node name="Cursor" type="TextureRect" parent="MainGame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("12_r1682")
+expand_mode = 1
+
+[node name="GameUI" parent="." instance=ExtResource("13_af7bk")]
+layout_mode = 1
