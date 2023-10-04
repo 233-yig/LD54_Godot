@@ -1,0 +1,14 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkwynkqpcsjr0"]
+
+[ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="1_fkctc"]
+[ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="2_4dgh6"]
+[ext_resource type="Texture2D" uid="uid://b3qe3ipeqfg3w" path="res://resources/images/2.png" id="3_2av23"]
+[ext_resource type="Texture2D" uid="uid://d2c0n6m5tlt6w" path="res://resources/images/3.png" id="4_f4bmu"]
+[ext_resource type="Texture2D" uid="uid://bin0k53r8odcj" path="res://resources/images/4.png" id="5_gho06"]
+[ext_resource type="Texture2D" uid="uid://ddb42ubv0ce3b" path="res://resources/images/[M].png" id="6_jwyk2"]
+[ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="7_oqtgm"]
+[ext_resource type="Texture2D" uid="uid://qcoad87gbwo6" path="res://resources/images/locater.png" id="8_x0igp"]
+[ext_resource type="Texture2D" uid="uid://b10pnj4tvxcmc" path="res://resources/images/[S].png" id="9_hgt7p"]
+
+[node name="GameBoard" type="GameBoard"]
+tiles = Array[Texture2D]([ExtResource("1_fkctc"), ExtResource("2_4dgh6"), ExtResource("3_2av23"), ExtResource("4_f4bmu"), ExtResource("5_gho06"), ExtResource("6_jwyk2"), ExtResource("6_jwyk2"), ExtResource("6_jwyk2"), ExtResource("6_jwyk2"), ExtResource("7_oqtgm"), ExtResource("8_x0igp"), ExtResource("9_hgt7p"), ExtResource("7_oqtgm"), ExtResource("6_jwyk2")])

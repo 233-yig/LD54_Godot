@@ -1,0 +1,148 @@
+[gd_scene load_steps=13 format=3 uid="uid://dunglh8j30vyk"]
+
+[ext_resource type="Script" path="res://scenes/game/game_ui.gd" id="1_ba21a"]
+[ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/image_ref/sir1.tres" id="2_1iauf"]
+[ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="3_q71m6"]
+[ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="4_0330s"]
+[ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="5_fnprs"]
+[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="6_cmhsd"]
+[ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="7_vvq3l"]
+[ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="8_wwdc5"]
+[ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="9_eghme"]
+
+[sub_resource type="GDScript" id="GDScript_sys8p"]
+script/source = "extends TextureRect
+
+@export var face: Array[Texture2D]
+func SetFace(idx: int):
+	texture = face[idx]
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_13yui"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnipu"]
+font_size = 25
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ba21a")
+
+[node name="Sir" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Face" type="TextureRect" parent="Sir"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_1iauf")
+expand_mode = 2
+stretch_mode = 5
+script = SubResource("GDScript_sys8p")
+face = Array[Texture2D]([ExtResource("2_1iauf"), ExtResource("3_q71m6"), ExtResource("4_0330s")])
+
+[node name="Box" type="TextureRect" parent="Sir"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_fnprs")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Sir/Box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_13yui")
+
+[node name="No_54" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -254.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Box" type="MarginContainer" parent="No_54"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="No_54/Box"]
+layout_mode = 2
+texture = ExtResource("5_fnprs")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="No_54/Box"]
+z_as_relative = false
+layout_mode = 2
+label_settings = SubResource("LabelSettings_13yui")
+
+[node name="Face" type="TextureRect" parent="No_54"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+texture = ExtResource("6_cmhsd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Placeholder" type="TextureRect" parent="No_54"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("7_vvq3l")
+expand_mode = 1
+
+[node name="Status" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 56.0
+
+[node name="Mines" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Mines"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("8_wwdc5")
+region_rect = Rect2(0.397919, -0.795509, 53.5905, 52.8194)
+
+[node name="Label" type="Label" parent="Status/Mines"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
+
+[node name="Flips" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="Status/Flips"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("9_eghme")
+region_rect = Rect2(-5, -9, 50, 50)
+
+[node name="Label" type="Label" parent="Status/Flips"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
