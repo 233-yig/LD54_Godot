@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="2_b1o3m"]
-[ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/anim/bg.tres" id="3_b2ack"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
 [ext_resource type="Texture2D" uid="uid://codyykf53dgsb" path="res://resources/images/spaces.png" id="4_jkekv"]
 [ext_resource type="Resource" uid="uid://wiprfp4c4gfu" path="res://maps/level2.tres" id="4_t1ipk"]
 [ext_resource type="Texture2D" uid="uid://bcdnby3uml38l" path="res://resources/images/mapbox.png" id="5_3ddht"]
+[ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/image_ref/bg.tres" id="5_cmv56"]
 [ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
 [ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="6_qau1f"]
 [ext_resource type="Texture2D" uid="uid://b3qe3ipeqfg3w" path="res://resources/images/2.png" id="7_373mj"]
@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_b2ack")
+texture = ExtResource("5_cmv56")
 expand_mode = 4
 stretch_mode = 5
 

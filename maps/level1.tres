@@ -8,9 +8,7 @@ mapSize = Vector2i(3, 3)
 mineCount = 2
 maxFlips = 4
 start_dialog = "@pause@1@
-@speaker_a@
-Hello world!
-@user_confirm@
+@speaker_a@ Hello world! @user_confirm@
 @pause@0@"
 lose_dialog = ""
 win_dialog = ""

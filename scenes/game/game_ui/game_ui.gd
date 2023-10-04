@@ -27,6 +27,9 @@ var user_skipped: bool = false
 
 func noop():
 	pass
+func delay():
+	if !user_skipped:
+		sum -= float(param())
 func set_map():
 	set_board.emit(param())
 func speaker_a():
@@ -48,9 +51,6 @@ func change_level():
 	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
 	transition.timed_out.connect(func(): reset_game.emit(int(level_idx)))
 	add_child(transition)
-func delay():
-	if !user_skipped:
-		sum -= float(param())
 func change_face():
 	$Sir/Face.SetFace(int(param()))
 func win_effect():

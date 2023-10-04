@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://dunglh8j30vyk"]
+[gd_scene load_steps=13 format=3 uid="uid://dunglh8j30vyk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_ui/game_ui.gd" id="1_507fy"]
-[ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/atlas/sir1.tres" id="2_g6pnl"]
-[ext_resource type="Texture2D" uid="uid://dv3i6uxe7ug3p" path="res://resources/atlas/sir2.tres" id="3_b0m8a"]
+[ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/image_ref/sir1.tres" id="2_pqa3h"]
 [ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="3_s17mv"]
-[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/anim/no54.tres" id="4_6yn34"]
-[ext_resource type="Texture2D" uid="uid://dinyv15evftp5" path="res://resources/atlas/sir3.tres" id="4_pv323"]
-[ext_resource type="Texture2D" uid="uid://bkhkvjiw2hpbs" path="res://resources/atlas/sir4.tres" id="5_6iply"]
+[ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="3_wgd0i"]
+[ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="4_mpx73"]
 [ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="5_blxpx"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="5_h6pnq"]
 [ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="6_jphcc"]
+[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="7_omibx"]
 
 [sub_resource type="GDScript" id="GDScript_sys8p"]
 script/source = "extends TextureRect
@@ -47,11 +46,11 @@ alignment = 1
 [node name="Face" type="TextureRect" parent="Sir"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-texture = ExtResource("2_g6pnl")
+texture = ExtResource("2_pqa3h")
 expand_mode = 2
 stretch_mode = 5
 script = SubResource("GDScript_sys8p")
-face = Array[Texture2D]([ExtResource("2_g6pnl"), ExtResource("3_b0m8a"), ExtResource("4_pv323"), ExtResource("5_6iply")])
+face = Array[Texture2D]([ExtResource("2_pqa3h"), ExtResource("3_wgd0i"), ExtResource("4_mpx73")])
 
 [node name="Box" type="TextureRect" parent="Sir"]
 layout_mode = 2
@@ -105,7 +104,7 @@ label_settings = SubResource("LabelSettings_13yui")
 [node name="Face" type="TextureRect" parent="No_54"]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
-texture = ExtResource("4_6yn34")
+texture = ExtResource("7_omibx")
 expand_mode = 1
 stretch_mode = 5
 
