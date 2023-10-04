@@ -1,12 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dunglh8j30vyk"]
+[gd_scene load_steps=14 format=3 uid="uid://dunglh8j30vyk"]
 
 [ext_resource type="Script" path="res://scenes/game/game_ui/game_ui.gd" id="1_507fy"]
 [ext_resource type="Texture2D" uid="uid://c65e3ifaftu1" path="res://resources/atlas/sir1.tres" id="2_g6pnl"]
+[ext_resource type="Texture2D" uid="uid://dv3i6uxe7ug3p" path="res://resources/atlas/sir2.tres" id="3_b0m8a"]
 [ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="3_s17mv"]
 [ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/anim/no54.tres" id="4_6yn34"]
+[ext_resource type="Texture2D" uid="uid://dinyv15evftp5" path="res://resources/atlas/sir3.tres" id="4_pv323"]
+[ext_resource type="Texture2D" uid="uid://bkhkvjiw2hpbs" path="res://resources/atlas/sir4.tres" id="5_6iply"]
 [ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="5_blxpx"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="5_h6pnq"]
 [ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="6_jphcc"]
+
+[sub_resource type="GDScript" id="GDScript_sys8p"]
+script/source = "extends TextureRect
+
+@export var face: Array[Texture2D]
+func SetFace(idx: int):
+	texture = face[idx]
+"
 
 [sub_resource type="LabelSettings" id="LabelSettings_13yui"]
 
@@ -33,20 +44,22 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Sir"]
+[node name="Face" type="TextureRect" parent="Sir"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 texture = ExtResource("2_g6pnl")
 expand_mode = 2
 stretch_mode = 5
+script = SubResource("GDScript_sys8p")
+face = Array[Texture2D]([ExtResource("2_g6pnl"), ExtResource("3_b0m8a"), ExtResource("4_pv323"), ExtResource("5_6iply")])
 
-[node name="TextureRect" type="TextureRect" parent="Sir"]
+[node name="Box" type="TextureRect" parent="Sir"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("3_s17mv")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="Sir/TextureRect"]
+[node name="Label" type="Label" parent="Sir/Box"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -57,7 +70,6 @@ offset_right = -25.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hello World!"
 label_settings = SubResource("LabelSettings_13yui")
 
 [node name="No_54" type="VBoxContainer" parent="."]
@@ -74,24 +86,23 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="No_54"]
-custom_minimum_size = Vector2(200, 200)
+[node name="Box" type="MarginContainer" parent="No_54"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="No_54/Box"]
+layout_mode = 2
 texture = ExtResource("3_s17mv")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="No_54/TextureRect"]
+[node name="Label" type="Label" parent="No_54/Box"]
+z_as_relative = false
 layout_mode = 2
-offset_top = 4.0
-offset_right = 250.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Hello World!"
 label_settings = SubResource("LabelSettings_13yui")
 
-[node name="Icon" type="TextureRect" parent="No_54"]
+[node name="Face" type="TextureRect" parent="No_54"]
 custom_minimum_size = Vector2(225, 225)
 layout_mode = 2
 texture = ExtResource("4_6yn34")

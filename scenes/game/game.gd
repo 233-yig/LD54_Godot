@@ -5,13 +5,16 @@ var cur_mines: int
 var cur_flips: int
 var cur_level: LevelData
 func InitializeLevel(idx: int):
+	if idx < 0 || idx >= levels.size():
+		add_sibling(preload("res://scenes/entry/lobby.tscn").instantiate())
+		queue_free()
+		return
 	cur_level = levels[idx]
 	
 	$GameUI.SetData(cur_mines, cur_level.mineCount, cur_flips, cur_level.maxFlips)
 	$GameUI.SetDialog(cur_level.start_dialog)
 	$MainGame.custom_minimum_size = Vector2(cur_level.mapSize) * $MainGame/Background.texture.get_size() / 3
 	$MainGame/GameBoard.load_data(cur_level.mapSize, cur_level.mineCount, cur_level.maxFlips, cur_level.mapStr)
-
 func flip(pos: Vector2i):
 	var ret = $MainGame/GameBoard.flip(pos)
 	if ret == $MainGame/GameBoard.OpResult_Success && cur_flips < cur_level.maxFlips:
@@ -33,8 +36,11 @@ func flag(pos: Vector2i):
 
 var interactable: bool = true
 func _ready():
+	$GameUI.switch_debug.connect(func(open: bool): $MainGame/GameBoard.debug(open))
 	$GameUI.block_game.connect(func(pause: bool): interactable = !pause)
 	$GameUI.reset_game.connect(InitializeLevel)
+	$GameUI.set_board.connect(func(map:String): $MainGame/GameBoard.load_data(cur_level.mapSize, cur_level.mineCount, cur_level.maxFlips, map))
+
 	InitializeLevel(0)
 
 var sum: float
@@ -50,8 +56,8 @@ func _process(delta):
 	
 	var pos: Vector2 = mouse_pos / ($MainGame/Background.texture.get_size() / 3)
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		flip(mouse_pos / ($MainGame/Background.texture.get_size() / 3))
+		flip(pos)
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		flag(mouse_pos / ($MainGame/Background.texture.get_size() / 3))
+		flag(pos)
 	else:
 		return

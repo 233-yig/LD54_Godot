@@ -7,9 +7,13 @@ script = ExtResource("1_vvd24")
 mapSize = Vector2i(3, 3)
 mineCount = 2
 maxFlips = 4
+start_dialog = "@pause@1@
+@speaker_a@
+Hello world!
+@user_confirm@
+@pause@0@"
+lose_dialog = ""
+win_dialog = ""
 mapStr = "eee
 eee
 eee"
-win_dialog = ""
-lose_dialog = ""
-start_dialog = ""
