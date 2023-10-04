@@ -1,10 +1,10 @@
 [gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://bbk0rkjfa5gw6"]
 
-[ext_resource type="Texture2D" uid="uid://dv3i6uxe7ug3p" path="res://resources/image_ref/sir2.tres" id="1_qaxe7"]
-[ext_resource type="Texture2D" uid="uid://bkhkvjiw2hpbs" path="res://resources/image_ref/sir4.tres" id="2_lq2c8"]
+[ext_resource type="Texture2D" uid="uid://bbjradwms4ybr" path="res://resources/images/sir_stare.png" id="1_y7axu"]
+[ext_resource type="Texture2D" uid="uid://x1fl1pgwwphk" path="res://resources/images/sir_blink.png" id="2_ok5mc"]
 
 [resource]
 frames = 2
-frame_0/texture = ExtResource("1_qaxe7")
-frame_1/texture = ExtResource("2_lq2c8")
-frame_1/duration = 1.0
+frame_0/texture = ExtResource("1_y7axu")
+frame_1/texture = ExtResource("2_ok5mc")
+frame_1/duration = 0.25

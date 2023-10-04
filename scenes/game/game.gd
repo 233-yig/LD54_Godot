@@ -34,22 +34,30 @@ func _ready():
 	$GameUI.set_board.connect(func(map:String): $MainGame/GameBoard.load_data(cur_level.mapSize, cur_level.mineCount, cur_level.maxFlips, map))
 
 	InitializeLevel(0)
+func _input(event):
+	if !event is InputEventMouseButton:
+		return
 
+	$Effect.visible = interactable && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	$Effect.position = get_global_mouse_position()
+
+	if !interactable:
+		return
+	if event.pressed:
+		return
+	var mouse_pos: Vector2 = $MainGame.get_local_mouse_position()
+	if !Rect2(Vector2(0, 0), $MainGame.custom_minimum_size).has_point(mouse_pos):
+		return
+	var pos: Vector2 = $MainGame.get_local_mouse_position() / ($MainGame/Background.texture.get_size() / 3)
+	match(event.button_index):
+		MOUSE_BUTTON_LEFT:
+			flip(pos)
+		MOUSE_BUTTON_RIGHT:
+			flag(pos)
 var sum: float
 func _process(delta):
 	sum += delta
-	var mouse_pos: Vector2 = $MainGame.get_local_mouse_position()
-	
-	$MainGame/Cursor.position = -$MainGame/Cursor.pivot_offset + Vector2(0, 10 * sin(sum)) + mouse_pos.clamp(Vector2(0,0) ,$MainGame.custom_minimum_size)
-	if !Rect2(Vector2(0, 0), $MainGame.custom_minimum_size).has_point(mouse_pos):
-		return
-	if !interactable:
-		return
-	
-	var pos: Vector2 = mouse_pos / ($MainGame/Background.texture.get_size() / 3)
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		flip(pos)
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		flag(pos)
-	else:
-		return
+	$MainGame/Cursor.position = $MainGame.get_local_mouse_position().clamp(
+		Vector2(0,0),
+		$MainGame.custom_minimum_size
+	) - $MainGame/Cursor.pivot_offset + Vector2(0, 10 * sin(sum)) 

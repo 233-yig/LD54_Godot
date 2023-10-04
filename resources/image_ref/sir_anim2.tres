@@ -1,10 +1,10 @@
 [gd_resource type="AnimatedTexture" load_steps=3 format=3 uid="uid://tb8khkbgbnxj"]
 
-[ext_resource type="Texture2D" uid="uid://dinyv15evftp5" path="res://resources/image_ref/sir3.tres" id="1_mk488"]
-[ext_resource type="Texture2D" uid="uid://bkhkvjiw2hpbs" path="res://resources/image_ref/sir4.tres" id="2_e668r"]
+[ext_resource type="Texture2D" uid="uid://5weciq7op5ub" path="res://resources/images/sir_idle.png" id="1_ymiqd"]
+[ext_resource type="Texture2D" uid="uid://x1fl1pgwwphk" path="res://resources/images/sir_blink.png" id="2_hk651"]
 
 [resource]
 frames = 2
-frame_0/texture = ExtResource("1_mk488")
-frame_1/texture = ExtResource("2_e668r")
-frame_1/duration = 1.0
+frame_0/texture = ExtResource("1_ymiqd")
+frame_1/texture = ExtResource("2_hk651")
+frame_1/duration = 0.25

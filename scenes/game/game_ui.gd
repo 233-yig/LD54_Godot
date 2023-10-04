@@ -23,47 +23,51 @@ func action():
 #begin dialog scripts
 var wait_user: bool = false
 var user_skipped: bool = false
-@onready var label: Label = $Sir/Box/Label
+@onready var label: RichTextLabel = $Sir/Box/Label
 
 func noop():
 	pass
+func append():
+	label.append_text(param())
 func delay():
-	if !user_skipped:
-		sum -= float(param())
-func set_map():
-	set_board.emit(param())
-func speaker_a():
-	label.text = ""
-	$No_54/Box.visible = false
-	label = $Sir/Box/Label
-	pass
-func speaker_b():
-	label.text = ""
-	$No_54/TextureRect.visible = true
-	label = $No_54/TextureRect/Label
-	pass
-func pause():
-	block_game.emit(int(param()))
-func debug():
-	switch_debug.emit(int(param()))
-func change_level():
-	var level_idx: String = param();
-	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
-	transition.timed_out.connect(func(): reset_game.emit(int(level_idx)))
-	add_child(transition)
-func change_face():
-	$Sir/Face.SetFace(int(param()))
-func win_effect():
-	#todo 
-	pass
-func lose_effect():
-	#todo
-	pass
+	user_skipped = false
+	sum -= float(param())
 func user_confirm():
 	user_skipped = false
 	wait_user = true
 	pass
 	
+func debug():
+	switch_debug.emit(int(param()))
+func pause():
+	block_game.emit(int(param()))
+func set_map():
+	set_board.emit(param())
+func change_level():
+	var level_idx: String = param();
+	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
+	transition.timeout.connect(func(): reset_game.emit(int(level_idx)))
+	add_child(transition)
+
+func speaker_a():
+	$No_54/Box.visible = false
+	label = $Sir/Box/Label
+	label.clear()
+	pass
+func speaker_b():
+	$No_54/Box.visible = true
+	label = $No_54/Box/Label
+	label.clear()
+	label.append_text("[center][/center]")
+	pass
+func change_face():
+	$Sir/Face.SetFace(int(param()))
+
+func win_effect():
+	pass
+func lose_effect():
+	pass
+
 #end dialog scripts
 func ProcessDialog(delta:float = 0):
 	if wait_user:
@@ -80,10 +84,10 @@ func ProcessDialog(delta:float = 0):
 	var cur_str:String = tokens[cur_idx]
 	if cur_offset < cur_str.length():
 		if user_skipped:
-			$Sir/Box/Label.text += cur_str.substr(cur_offset)
+			label.add_text(cur_str.substr(cur_offset))
 			cur_offset = cur_str.length()
 		else:
-			$Sir/Box/Label.text += cur_str[cur_offset]
+			label.add_text(cur_str[cur_offset])
 			cur_offset += 1
 	else:
 		action()
@@ -92,12 +96,17 @@ func ProcessDialog(delta:float = 0):
 	
 	if user_skipped:
 		ProcessDialog()	
-var sum:float = 0
-func _process(delta):
-	if Input.is_key_pressed(KEY_Z):
+
+func _input(event: InputEvent):
+	if event is InputEventKey && event.pressed == false:
+		if event.keycode == KEY_Z:
+			wait_user = false
+		if event.keycode == KEY_X:
+			user_skipped = true
+	elif event is InputEventMouseButton:
 		wait_user = false
-	if Input.is_key_pressed(KEY_X):
-		user_skipped = true
+var sum: float = 0
+func _process(delta):
 	ProcessDialog(delta)
 
 

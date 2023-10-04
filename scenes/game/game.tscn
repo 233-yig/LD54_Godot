@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=29 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -7,9 +7,36 @@
 [ext_resource type="Texture2D" uid="uid://bcdnby3uml38l" path="res://resources/images/mapbox.png" id="5_3ddht"]
 [ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/image_ref/bg.tres" id="5_cmv56"]
 [ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
-[ext_resource type="PackedScene" uid="uid://dkwynkqpcsjr0" path="res://scenes/game/game_board.tscn" id="7_r08aw"]
-[ext_resource type="PackedScene" uid="uid://dunglh8j30vyk" path="res://scenes/game/game_ui.tscn" id="10_2fpwf"]
+[ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="7_ovot8"]
+[ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="8_i1xw4"]
+[ext_resource type="Texture2D" uid="uid://b3qe3ipeqfg3w" path="res://resources/images/2.png" id="9_23vlu"]
+[ext_resource type="Texture2D" uid="uid://d2c0n6m5tlt6w" path="res://resources/images/3.png" id="10_au8e3"]
+[ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="10_gg6j1"]
+[ext_resource type="Texture2D" uid="uid://bin0k53r8odcj" path="res://resources/images/4.png" id="11_6poam"]
+[ext_resource type="Texture2D" uid="uid://ddb42ubv0ce3b" path="res://resources/images/[M].png" id="12_pbmtc"]
 [ext_resource type="Texture2D" uid="uid://cj4q5wa3kuwm1" path="res://resources/images/No.54.png" id="12_r1682"]
+[ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="13_pe0fq"]
+[ext_resource type="Texture2D" uid="uid://qcoad87gbwo6" path="res://resources/images/locater.png" id="14_42f02"]
+[ext_resource type="Texture2D" uid="uid://b10pnj4tvxcmc" path="res://resources/images/[S].png" id="15_itv12"]
+[ext_resource type="Script" path="res://scenes/game/game_ui.gd" id="19_lailm"]
+[ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="20_i6nf1"]
+[ext_resource type="Texture2D" uid="uid://dngf8ae7cngci" path="res://resources/images/sir_blackline.png" id="21_gk72c"]
+[ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="22_wwgjv"]
+[ext_resource type="Texture2D" uid="uid://x1fl1pgwwphk" path="res://resources/images/sir_blink.png" id="23_ecj27"]
+[ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="24_v77qh"]
+[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
+[ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
+
+[sub_resource type="GDScript" id="GDScript_sys8p"]
+script/source = "extends TextureRect
+
+@export var face: Array[Texture2D]
+func SetFace(idx: int):
+	texture = face[idx]
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnipu"]
+font_size = 25
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -60,7 +87,8 @@ patch_margin_bottom = 100
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="GameBoard" parent="MainGame" instance=ExtResource("7_r08aw")]
+[node name="GameBoard" type="GameBoard" parent="MainGame"]
+tiles = Array[Texture2D]([ExtResource("7_ovot8"), ExtResource("8_i1xw4"), ExtResource("9_23vlu"), ExtResource("10_au8e3"), ExtResource("11_6poam"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("13_pe0fq"), ExtResource("14_42f02"), ExtResource("15_itv12"), ExtResource("13_pe0fq"), ExtResource("12_pbmtc")])
 layout_mode = 0
 
 [node name="Boundary" type="TextureRect" parent="MainGame"]
@@ -93,9 +121,157 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
-pivot_offset = Vector2(40, 40)
+pivot_offset = Vector2(30, 40)
 texture = ExtResource("12_r1682")
 expand_mode = 1
 
-[node name="GameUI" parent="." instance=ExtResource("10_2fpwf")]
+[node name="Effect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -60.0
+offset_right = -10.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(30, 40)
+texture = ExtResource("10_gg6j1")
+expand_mode = 1
+
+[node name="GameUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_lailm")
+
+[node name="Sir" type="HBoxContainer" parent="GameUI"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Face" type="TextureRect" parent="GameUI/Sir"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("20_i6nf1")
+expand_mode = 2
+stretch_mode = 5
+script = SubResource("GDScript_sys8p")
+face = Array[Texture2D]([ExtResource("20_i6nf1"), ExtResource("21_gk72c"), ExtResource("22_wwgjv"), ExtResource("23_ecj27")])
+
+[node name="Box" type="TextureRect" parent="GameUI/Sir"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("24_v77qh")
+expand_mode = 1
+
+[node name="Label" type="RichTextLabel" parent="GameUI/Sir/Box"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="No_54" type="VBoxContainer" parent="GameUI"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -254.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="Box" type="TextureRect" parent="GameUI/No_54"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("24_v77qh")
+expand_mode = 1
+
+[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Box"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="Face" type="TextureRect" parent="GameUI/No_54"]
+custom_minimum_size = Vector2(225, 225)
+layout_mode = 2
+texture = ExtResource("25_18vis")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Placeholder" type="TextureRect" parent="GameUI/No_54"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("13_pe0fq")
+expand_mode = 1
+
+[node name="Status" type="VBoxContainer" parent="GameUI"]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 56.0
+
+[node name="Mines" type="HBoxContainer" parent="GameUI/Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="GameUI/Status/Mines"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("26_v3ubx")
+region_rect = Rect2(0.397919, -0.795509, 53.5905, 52.8194)
+
+[node name="Label" type="Label" parent="GameUI/Status/Mines"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
+
+[node name="Flips" type="HBoxContainer" parent="GameUI/Status"]
+layout_mode = 2
+
+[node name="Icon" type="NinePatchRect" parent="GameUI/Status/Flips"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("10_gg6j1")
+region_rect = Rect2(-5, -9, 50, 50)
+
+[node name="Label" type="Label" parent="GameUI/Status/Flips"]
+layout_mode = 2
+text = "5/10"
+label_settings = SubResource("LabelSettings_vnipu")
