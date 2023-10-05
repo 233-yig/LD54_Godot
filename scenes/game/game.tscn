@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=38 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://wiprfp4c4gfu" path="res://maps/level2.tres" id="4_t1ipk"]
 [ext_resource type="Texture2D" uid="uid://bcdnby3uml38l" path="res://resources/images/mapbox.png" id="5_3ddht"]
 [ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/image_ref/bg.tres" id="5_cmv56"]
+[ext_resource type="AudioStream" uid="uid://d5c8mwfuagr6" path="res://resources/audios/Quantumine Capture OST.mp3" id="5_kp43f"]
 [ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
 [ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="7_ovot8"]
 [ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="8_i1xw4"]
@@ -16,16 +17,28 @@
 [ext_resource type="Texture2D" uid="uid://ddb42ubv0ce3b" path="res://resources/images/[M].png" id="12_pbmtc"]
 [ext_resource type="Texture2D" uid="uid://cj4q5wa3kuwm1" path="res://resources/images/No.54.png" id="12_r1682"]
 [ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="13_pe0fq"]
-[ext_resource type="Texture2D" uid="uid://qcoad87gbwo6" path="res://resources/images/locater.png" id="14_42f02"]
+[ext_resource type="Texture2D" uid="uid://dcuj0u8fto3ln" path="res://resources/images/locator.png" id="14_ql1h2"]
 [ext_resource type="Texture2D" uid="uid://b10pnj4tvxcmc" path="res://resources/images/[S].png" id="15_itv12"]
 [ext_resource type="Script" path="res://scenes/game/game_ui.gd" id="19_lailm"]
 [ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="20_i6nf1"]
+[ext_resource type="AudioStream" uid="uid://bphfjo11r10qx" path="res://resources/audios/TileFlip_Safe_V2_01.mp3" id="20_i25if"]
+[ext_resource type="AudioStream" uid="uid://b57w8axv4bkka" path="res://resources/audios/Flag Placed.mp3" id="21_b7l44"]
 [ext_resource type="Texture2D" uid="uid://dngf8ae7cngci" path="res://resources/images/sir_blackline.png" id="21_gk72c"]
 [ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="22_wwgjv"]
 [ext_resource type="Texture2D" uid="uid://x1fl1pgwwphk" path="res://resources/images/sir_blink.png" id="23_ecj27"]
+[ext_resource type="AudioStream" uid="uid://c8mqopftmys4i" path="res://resources/audios/LevelBeatOneShot.mp3" id="23_o66us"]
+[ext_resource type="AudioStream" uid="uid://bp0u3hjdb1lww" path="res://resources/audios/Tile flip (Bomb)_01.mp3" id="24_5ev1c"]
 [ext_resource type="Texture2D" uid="uid://bptaysf0cy04" path="res://resources/images/tutorial box.png" id="24_v77qh"]
 [ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gbi85"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t7imm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vuo6v"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pd0tl"]
 
 [sub_resource type="GDScript" id="GDScript_sys8p"]
 script/source = "extends TextureRect
@@ -46,7 +59,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_g1p6r")
-levels = Array[Resource("res://gdscripts/leveldata.gd")]([ExtResource("3_sap3j"), ExtResource("4_t1ipk"), ExtResource("5_sl4aa")])
+levels = Array[Resource("res://gdscripts/level_data.gd")]([ExtResource("3_sap3j"), ExtResource("4_t1ipk"), ExtResource("5_sl4aa")])
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kp43f")
+autoplay = true
 
 [node name="Bg" type="TextureRect" parent="."]
 layout_mode = 1
@@ -88,7 +105,7 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GameBoard" type="GameBoard" parent="MainGame"]
-tiles = Array[Texture2D]([ExtResource("7_ovot8"), ExtResource("8_i1xw4"), ExtResource("9_23vlu"), ExtResource("10_au8e3"), ExtResource("11_6poam"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("12_pbmtc"), ExtResource("13_pe0fq"), ExtResource("14_42f02"), ExtResource("15_itv12"), ExtResource("13_pe0fq"), ExtResource("12_pbmtc")])
+tiles = Array[Texture2D]([ExtResource("7_ovot8"), ExtResource("8_i1xw4"), ExtResource("9_23vlu"), ExtResource("10_au8e3"), ExtResource("11_6poam"), SubResource("PlaceholderTexture2D_gbi85"), SubResource("PlaceholderTexture2D_t7imm"), SubResource("PlaceholderTexture2D_vuo6v"), SubResource("PlaceholderTexture2D_pd0tl"), ExtResource("13_pe0fq"), ExtResource("14_ql1h2"), ExtResource("15_itv12"), ExtResource("13_pe0fq"), ExtResource("12_pbmtc")])
 layout_mode = 0
 
 [node name="Boundary" type="TextureRect" parent="MainGame"]
@@ -108,6 +125,7 @@ texture = ExtResource("5_3ddht")
 expand_mode = 1
 
 [node name="Cursor" type="TextureRect" parent="MainGame"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -125,7 +143,7 @@ pivot_offset = Vector2(30, 40)
 texture = ExtResource("12_r1682")
 expand_mode = 1
 
-[node name="Effect" type="TextureRect" parent="."]
+[node name="ClickEffect" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -144,6 +162,14 @@ pivot_offset = Vector2(30, 40)
 texture = ExtResource("10_gg6j1")
 expand_mode = 1
 
+[node name="FlipSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("20_i25if")
+
+[node name="FlagSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("21_b7l44")
+
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -153,18 +179,40 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_lailm")
 
-[node name="Sir" type="HBoxContainer" parent="GameUI"]
+[node name="WinSound" type="AudioStreamPlayer2D" parent="GameUI"]
+position = Vector2(576, 324)
+stream = ExtResource("23_o66us")
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="GameUI"]
+position = Vector2(576, 324)
+stream = ExtResource("24_5ev1c")
+
+[node name="Sir" type="Control" parent="GameUI"]
+custom_minimum_size = Vector2(800, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="HBoxContainer" parent="GameUI/Sir"]
 custom_minimum_size = Vector2(800, 200)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -200.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Face" type="TextureRect" parent="GameUI/Sir"]
+[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/Sir/Content"]
+
+[node name="Face" type="TextureRect" parent="GameUI/Sir/Content"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 texture = ExtResource("20_i6nf1")
@@ -173,13 +221,13 @@ stretch_mode = 5
 script = SubResource("GDScript_sys8p")
 face = Array[Texture2D]([ExtResource("20_i6nf1"), ExtResource("21_gk72c"), ExtResource("22_wwgjv"), ExtResource("23_ecj27")])
 
-[node name="Box" type="TextureRect" parent="GameUI/Sir"]
+[node name="Box" type="TextureRect" parent="GameUI/Sir/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("24_v77qh")
 expand_mode = 1
 
-[node name="Label" type="RichTextLabel" parent="GameUI/Sir/Box"]
+[node name="Label" type="RichTextLabel" parent="GameUI/Sir/Content/Box"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -194,21 +242,33 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="No_54" type="VBoxContainer" parent="GameUI"]
-custom_minimum_size = Vector2(200, 0)
+[node name="No_54" type="Control" parent="GameUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="GameUI/No_54"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -254.0
+offset_left = -200.0
+offset_top = -608.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="Box" type="TextureRect" parent="GameUI/No_54"]
+[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/No_54/Content"]
+position = Vector2(-902, 433)
+
+[node name="Box" type="TextureRect" parent="GameUI/No_54/Content"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -216,7 +276,7 @@ size_flags_vertical = 3
 texture = ExtResource("24_v77qh")
 expand_mode = 1
 
-[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Box"]
+[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Content/Box"]
 z_as_relative = false
 layout_mode = 1
 anchors_preset = 12
@@ -230,14 +290,14 @@ bbcode_enabled = true
 fit_content = true
 scroll_active = false
 
-[node name="Face" type="TextureRect" parent="GameUI/No_54"]
-custom_minimum_size = Vector2(225, 225)
+[node name="Face" type="TextureRect" parent="GameUI/No_54/Content"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 texture = ExtResource("25_18vis")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 
-[node name="Placeholder" type="TextureRect" parent="GameUI/No_54"]
+[node name="Placeholder" type="TextureRect" parent="GameUI/No_54/Content"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 texture = ExtResource("13_pe0fq")

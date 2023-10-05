@@ -1,15 +1,60 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bw4vo0iq83lop"]
 
-[ext_resource type="Script" path="res://gdscripts/leveldata.gd" id="1_8eugn"]
+[ext_resource type="Script" path="res://gdscripts/level_data.gd" id="1_8eugn"]
 
 [resource]
 script = ExtResource("1_8eugn")
 mapSize = Vector2i(5, 5)
 mineCount = 4
 maxFlips = 8
-start_dialog = ""
-lose_dialog = ""
-win_dialog = ""
+start_dialog = "@pause@1@
+@speaker_a@@change_face@2@
+You’re getting closer and closer to the dangerous level on the quantum planet. Are you confident about taking on this mission?
+@user_confirm@
+
+@speaker_b@
+Yes, sir. I will keep calm and purr on.
+@user_confirm@
+
+@pause@0@
+"
+lose_dialog = "@pause@1@
+@speaker_a@@change_face@3@
+You can do better, No.54.
+@user_confirm@
+
+@lose_effect@@delay@5@
+
+@speaker_b@
+So hissterical!
+@user_confirm@
+
+@speaker_a@
+What?
+@user_confirm@
+
+@reset_map@
+@speaker_a@@change_face@2@
+@append@
+You’re getting closer and closer to the dangerous level on the quantum planet. Are you confident about taking on this mission?
+@@pause@0@"
+win_dialog = "@win_effect@@pause@1@
+@speaker_a@@change_face@3@
+You’re doing great in today’s simulation, No.54. Please go get some rest and prepare for the next training.
+@user_confirm@
+
+@speaker_b@
+I can go a little further, sir. Look at me now.
+@user_confirm@
+
+@speaker_a@@change_face@1@
+Go get rest, No.54.
+@user_confirm@
+
+@speaker_b@
+Yes, sir. 
+@user_confirm@
+@finish_game@"
 mapStr = "eeeee
 eeeee
 eeeee

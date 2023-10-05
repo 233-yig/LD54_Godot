@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b57w8axv4bkka"
+path="res://.godot/imported/Flag Placed.mp3-c7a46df5e74d59702bf9d754ae8d1f5e.mp3str"
+
+[deps]
+
+source_file="res://resources/audios/Flag Placed.mp3"
+dest_files=["res://.godot/imported/Flag Placed.mp3-c7a46df5e74d59702bf9d754ae8d1f5e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

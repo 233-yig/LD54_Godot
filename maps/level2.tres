@@ -1,15 +1,51 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://wiprfp4c4gfu"]
 
-[ext_resource type="Script" path="res://gdscripts/leveldata.gd" id="1_hutdl"]
+[ext_resource type="Script" path="res://gdscripts/level_data.gd" id="1_hutdl"]
 
 [resource]
 script = ExtResource("1_hutdl")
 mapSize = Vector2i(4, 4)
 mineCount = 3
 maxFlips = 5
-start_dialog = ""
-lose_dialog = ""
-win_dialog = ""
+start_dialog = "@pause@1@
+@speaker_a@@change_face@2@
+The area is bigger now, but it’s always the same rule. Be careful. 
+@user_confirm@
+
+@speaker_b@
+Yes, sir.
+@user_confirm@
+
+@speaker_a@@pause@0@
+"
+lose_dialog = "@pause@1@
+
+@speaker_a@@change_face@3@
+Always think twice before stretching your paws out.
+@user_confirm@
+
+@lose_effect@@delay@5@
+
+@speaker_b@
+What a special mewment!
+@user_confirm@
+
+@speaker_a@
+Huh?
+@user_confirm@
+
+@reset_map@
+@speaker_a@@change_face@2@
+@append@
+The area is bigger now, but it’s always the same rule. Be careful.
+@
+@pause@0@
+"
+win_dialog = "@win_effect@@pause@1@
+@speaker_a@@change_face@0@
+Good job. Let’s move on.
+@user_confirm@
+@speaker_a@ @change_level@2@"
 mapStr = "eeee
 eeee
 eeee

@@ -1,69 +1,125 @@
 [gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://bh42bi8uu7j3a"]
 
-[ext_resource type="Script" path="res://gdscripts/leveldata.gd" id="1_vvd24"]
+[ext_resource type="Script" path="res://gdscripts/level_data.gd" id="1_ne0jh"]
 
 [resource]
-script = ExtResource("1_vvd24")
+script = ExtResource("1_ne0jh")
 mapSize = Vector2i(3, 3)
 mineCount = 2
 maxFlips = 4
 start_dialog = "@pause@1@
-@speaker_a@@change_face@0@No.54, are you ready to begin your first quantum capture simulation? @user_confirm@
+@speaker_a@@change_face@0@
+No.54, are you ready to begin your first quantum capture simulation? @append@(Press[Z] to confirm, Press[X] to skip)@
+@user_confirm@
 
-@speaker_b@Yes, sir. @user_confirm@
+@speaker_b@
+Yes, sir.
+@user_confirm@
 
-@speaker_a@As I said before, the real thing could be extremely dangerous. Everything here in the system feels like the real situation on the quantum planet, except that you won’t actually die. Let’s go over the important information about quantumines again. @user_confirm@
+@speaker_a@
+As I said before, the real thing could be extremely dangerous. Everything here in the system feels like the real situation on the quantum planet, except that you won’t actually die. Let’s go over the important information about quantumines again.
+@user_confirm@
 
-@speaker_a@Quantumines are dangerous quantum matters. They appear to be randomch and unstable before we find them. @user_confirm@
-@speaker_a@Fortunately, our corporation has developed the most advanced equipment to detect and locate them. Do you have them? @user_confirm@
+@speaker_a@
+Quantumines are dangerous quantum matters. They appear to be randomch and unstable before we find them.
+@user_confirm@
 
-@speaker_b@Yes, sir. The detector in my paws and the locater in my pocket. @user_confirm@
+@speaker_a@
+Fortunately, our corporation has developed the most advanced equipment to detect and locate them. Do you have them?
+@user_confirm@
 
-@speaker_a@Good. Once you use your flipaw to open a safe space on the ground of the quantum planet, the detector will reveal a number on that space (Mouse: left click). And that number indicates? @user_confirm@
+@speaker_b@
+Yes, sir. The detector in my paws and the locater in my pocket.
+@user_confirm@
 
-@speaker_b@The number of mines around it. @user_confirm@
+@speaker_a@
+Good. Once you use your flipaw to open a safe space on the ground of the quantum planet, the detector will reveal a number on that space @append@(Mouse: left click)@. And that number indicates? 
+@user_confirm@
 
-@speaker_a@Correct. It ranges from 0 to 8. If a space says “2,” there must be two mines under any two spaces around it. By calculation, we may determine the current state of a hidden quantum space next to that opened space. @user_confirm@
+@speaker_b@
+The number of mines around it.
+@user_confirm@
+
+@speaker_a@
+Correct. It ranges from 0 to 8. If a space says “2,” there must be two mines under any two spaces around it. By calculation, we may determine the current state of a hidden quantum space next to that opened space. 
+@user_confirm@
+
 @debug@1@
 
-@speaker_a@There are three states of a hidden quantum space:
+@speaker_a@
+There are three states of a hidden quantum space:
 @append@[color=green]
 [S][/color]@: Safe. There is definitely no quantumine.
 @append@[color=yellow]
 [?][/color]@: Undetermined. It’s safe if there are no other hidden safe spaces. It’s a quantumine if there are hidden safe spaces. 
 @append@[color=red]
-[M][/color]@: Mine. There must be a quantumine.@user_confirm@
+[M][/color]@: Mine. There must be a quantumine.
+@user_confirm@
 
-@speaker_a@So, open a space only when it is 100 percent safe. Don’t risk opening an uncertain space unless there are no determined safe spaces. Quantumines will explode and blow you to pieces once you encounter them. @user_confirm@
+@speaker_a@
+So, open a space only when it is 100 percent safe. Don’t risk opening an uncertain space unless there are no determined safe spaces. Quantumines will explode and blow you to pieces once you encounter them.
+@user_confirm@
 
-@speaker_b@Yes, sir. @user_confirm@
+@speaker_b@
+Yes, sir.
+@user_confirm@
 
-@speaker_a@However, our goal is to successfully locate and capture all of the quantumines in a certain area instead of flipping the safe spaces around.@user_confirm@
+@speaker_a@
+However, our goal is to successfully locate and capture all of the quantumines in a certain area instead of flipping the safe spaces around.
+@user_confirm@
 
-@speaker_b@I will use my lokiter to capture them. @user_confirm@
+@speaker_b@
+I will use my lokiter to capture them.
+@user_confirm@
 
-@speaker_a@It’s locater. Use it wisely. If you place your locater at the wrong spot, you may be killed. @user_confirm@
+@speaker_a@
+It’s locater. Use it wisely. If you place your locater at the wrong spot, you may be killed.
+@user_confirm@
 
-@speaker_b@Yes, sir. I will place it only when there has to be a quantumine. (Mouse: Right click) @user_confirm@
+@speaker_b@
+Yes, sir. I will place it only when there has to be a quantumine. @append@(Mouse: Right click)@
+@user_confirm@
 
-@speaker_a@It’s good that we also know the total number of quantumines in a discovered area. so we will give you exactly enough locators for every mission. Right now, we have 2 quantumines to capture. It’s also shown on the top left corner of your panel. @user_confirm@
+@speaker_a@
+It’s good that we also know the total number of quantumines in a discovered area. so we will give you exactly enough locators for every mission. Right now, we have 2 quantumines to capture. It’s also shown on the top left corner of your panel.
+@user_confirm@
 
-@speaker_b@Sir, the number of quantum spaces that I can open is limited, right? @user_confirm@
+@speaker_b@
+Sir, the number of quantum spaces that I can open is limited, right?
+@user_confirm@
 
-@speaker_a@Exactly. But we have the information of that maximum number. As indicated on the top left, next to the flipaw icon, you can open up to 4 spaces. Once you open the fifth space, a random opened space will close. @user_confirm@
+@speaker_a@
+Exactly. But we have the information of that maximum number. As indicated on the top left, next to the flipaw icon, you can open up to 4 spaces. Once you open the fifth space, a random opened space will close.
+@user_confirm@
 
-@speaker_b@Are we able to close any spaces on our own? @user_confirm@
+@speaker_b@
+Are we able to close any spaces on our own?
+@user_confirm@
 
-@speaker_a@No. This planet’s rule does not allow us to do that, and even our most developed technology cannot figure it out. @user_confirm@The discovery of the quantum planet is too new for us, and doing research on this planet is a tough task due to its mysterious power. That’s why we need to bring more quantum samples back. @user_confirm@
+@speaker_a@
+No. This planet’s rule does not allow us to do that, and even our most developed technology cannot figure it out
+@user_confirm@
+. The discovery of the quantum planet is too new for us, and doing research on this planet is a tough task due to its mysterious power. That’s why we need to bring more quantum samples back. 
+@user_confirm@
 
-@speaker_b@Don’t worry, sir. I was born to complete this glorious mission. @user_confirm@
+@speaker_b@
+Don’t worry, sir. I was born to complete this glorious mission.
+@user_confirm@
 
-@speaker_a@@change_face@1@…… @user_confirm@
-@speaker_a@@change_face@2@While you’re doing your job, I’ll be monitoring the system. Let’s start your first simulation. @user_confirm@
+@speaker_a@@change_face@1@
+......
+@user_confirm@
 
-@speaker_b@Yes, sir. @user_confirm@
+@speaker_a@@change_face@2@
+While you’re doing your job, I’ll be monitoring the system. Let’s start your first simulation.
+@user_confirm@
 
-@speaker_a@You can pull out the tutorial any time down here.
+@speaker_b@
+Yes, sir.
+@user_confirm@
+
+@speaker_a@
+You can pull out the tutorial any time down here.@append@(Press [C])@
 Left click to open a quantum space. Right click to place a locator.
 The number on a quantum space indicates how many quantumines around it.
 There are three states of a hidden quantum space:
@@ -72,25 +128,43 @@ There are three states of a hidden quantum space:
 @append@[color=yellow]
 [?][/color]@: Undetermined. It’s safe if there are no other hidden safe spaces. It’s a quantumine if there are hidden safe spaces. 
 @append@[color=red]
-[M][/color]@: Mine. There must be a quantumine@user_confirm@.
-
+[M][/color]@: Mine. There must be a quantumine
+@user_confirm@.
 Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so.
 
 @pause@0@
 @debug@0@
 "
 lose_dialog = "@pause@1@
-@speaker_a@@change_face@3@*sigh. Prepare for the lifelike boom.@user_confirm@
+
+@speaker_a@@change_face@3@
+*sigh. Prepare for the lifelike boom.
+@user_confirm@
+
 @lose_effect@@delay@5@
-@speaker_b@How cat-astrophic! @user_confirm@
-@speaker_a@??? @user_confirm@
-@set_map@
-eee
-e2e
-e11
+
+@speaker_b@
+How cat-astrophic!
+@user_confirm@
+
+@speaker_a@@change_face@0@
+???
+@user_confirm@
+
+@reset_map@
+@speaker_a@@change_face@2@
+@append@
+You can pull out the tutorial any time down here.(Press [C])
+Left click to open a quantum space. Right click to place a locator.
+The number on a quantum space indicates how many quantumines around it.
+There are three states of a hidden quantum space:
+[color=green][S][/color]: Safe. There is definitely no quantumine.
+[color=yellow][?][/color]: Undetermined. It’s safe if there are no other hidden safe spaces. It’s a quantumine if there are hidden safe spaces. 
+[color=red][M][/color]: Mine. There must be a quantumine.
+Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so.
 @
 @pause@0@"
-win_dialog = "@pause@1@@win_effect@
+win_dialog = "@win_effect@@pause@1@
 @speaker_a@@change_face@0@Well done. Are you ready to proceed? @user_confirm@
 @speaker_b@Yes, sir. I’m no scaredy kitty. @user_confirm@
 @speaker_a@ @change_level@1@"

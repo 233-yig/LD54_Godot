@@ -1,17 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqkhusu4mst5"]
+[gd_scene load_steps=4 format=3 uid="uid://dqkhusu4mst5"]
 
+[ext_resource type="AudioStream" uid="uid://drxvtuxi0mpjb" path="res://resources/audios/QuantumineCapture_bgm.mp3" id="1_0vp1u"]
 [ext_resource type="Texture2D" uid="uid://jeqbc38myhxu" path="res://resources/image_ref/title.tres" id="1_4rqgc"]
 
-[sub_resource type="GDScript" id="GDScript_g3542"]
-script/source = "extends Button
+[sub_resource type="GDScript" id="GDScript_y7pq7"]
+script/source = "extends Control
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pressed.connect(func(): 
-		add_sibling(preload(\"res://scenes/game/game.tscn\").instantiate())
-		queue_free()
-	)
+func play():
+	add_sibling(preload(\"res://scenes/game/game.tscn\").instantiate())
+	queue_free()
 "
 
 [node name="Lobby" type="Control"]
@@ -21,6 +18,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_y7pq7")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_0vp1u")
+autoplay = true
 
 [node name="Bg" type="TextureRect" parent="."]
 layout_mode = 1
@@ -44,4 +46,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Start Game"
-script = SubResource("GDScript_g3542")
+
+[connection signal="pressed" from="Button" to="." method="play"]

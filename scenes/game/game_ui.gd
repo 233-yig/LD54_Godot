@@ -1,11 +1,10 @@
 extends Control
-func _ready():
-	pass
-	
+
+signal return_lobby
 signal switch_debug
 signal block_game
 signal reset_game
-signal set_board
+signal load_level
 
 var tokens: PackedStringArray;
 var cur_idx: int = 0
@@ -20,10 +19,18 @@ func action():
 		return
 	call(tokens[cur_idx])
 
+var dialog_open
+@onready var tween: Tween = create_tween().set_parallel()
+func toggle_dialog():
+	tween.kill()
+	tween = create_tween().set_parallel()
+	tween.tween_property($No_54,"position:x", 0 if dialog_open else 200, 0.5)
+	tween.tween_property($Sir,"position:y", 0 if dialog_open else 200, 0.5)
+
 #begin dialog scripts
 var wait_user: bool = false
 var user_skipped: bool = false
-@onready var label: RichTextLabel = $Sir/Box/Label
+@onready var label: RichTextLabel = $Sir/Content/Box/Label
 
 func noop():
 	pass
@@ -33,41 +40,44 @@ func delay():
 	user_skipped = false
 	sum -= float(param())
 func user_confirm():
-	user_skipped = false
 	wait_user = true
 	pass
 	
 func debug():
 	switch_debug.emit(int(param()))
 func pause():
-	block_game.emit(int(param()))
-func set_map():
-	set_board.emit(param())
+	var paused:bool = int(param())
+	block_game.emit(paused)
+	dialog_open = paused
+	toggle_dialog()
+func reset_map():
+	reset_game.emit()
 func change_level():
 	var level_idx: String = param();
 	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
-	transition.timeout.connect(func(): reset_game.emit(int(level_idx)))
+	transition.timeout.connect(func(): load_level.emit(int(level_idx)))
 	add_child(transition)
 
 func speaker_a():
-	$No_54/Box.visible = false
-	label = $Sir/Box/Label
+	$No_54/Content/Box.visible = false
+	label = $Sir/Content/Box/Label
 	label.clear()
 	pass
 func speaker_b():
-	$No_54/Box.visible = true
-	label = $No_54/Box/Label
+	$No_54/Content/Box.visible = true
+	label = $No_54/Content/Box/Label
 	label.clear()
 	label.append_text("[center][/center]")
 	pass
 func change_face():
-	$Sir/Face.SetFace(int(param()))
+	$Sir/Content/Face.SetFace(int(param()))
 
 func win_effect():
-	pass
+	$WinSound.play()
 func lose_effect():
-	pass
-
+	$LoseSound.play()
+func finish_game():
+	return_lobby.emit()
 #end dialog scripts
 func ProcessDialog(delta:float = 0):
 	if wait_user:
@@ -96,14 +106,20 @@ func ProcessDialog(delta:float = 0):
 	
 	if user_skipped:
 		ProcessDialog()	
-
 func _input(event: InputEvent):
-	if event is InputEventKey && event.pressed == false:
-		if event.keycode == KEY_Z:
-			wait_user = false
-		if event.keycode == KEY_X:
-			user_skipped = true
-	elif event is InputEventMouseButton:
+	if event is InputEventKey && event.pressed:
+		match(event.keycode):
+			KEY_Z:
+				wait_user = false
+				user_skipped = false
+			KEY_X:
+				user_skipped = true
+			KEY_C:
+				if(tween.is_running()):
+					return
+				dialog_open = !dialog_open
+				toggle_dialog()
+	elif event is InputEventMouseButton && event.pressed:
 		wait_user = false
 var sum: float = 0
 func _process(delta):
