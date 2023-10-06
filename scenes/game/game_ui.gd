@@ -30,11 +30,9 @@ func noop():
 func append():
 	label.append_text(param())
 func delay():
-	sound.stop()
 	user_skipped = false
-	sum -= float(param())
+	sum = -float(param())
 func user_confirm():
-	sound.stop()
 	wait_user = true
 	pass
 	
@@ -46,11 +44,9 @@ func pause():
 	$Blocker.visible = paused
 
 func reset_map():
-	sound.stop()
 	reset_game.emit()
 	$LoseEffect/Image.custom_minimum_size = Vector2()
 func change_level():
-	sound.stop()
 	var level_idx: String = param();
 	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
 	transition.timeout.connect(func(): load_level.emit(int(level_idx)))
@@ -61,17 +57,13 @@ func speaker_a():
 	label = $Sir/Content/Box/Label
 	label.clear()
 
-	sound.stop()
 	sound = $Sir/Sound
-	sound.play()
 func speaker_b():
 	$No_54/Content/Box.visible = true
 	label = $No_54/Content/Box/Wrap/Label
 	label.clear()
 	
-	sound.stop()
 	sound = $No_54/Sound
-	sound.play()
 	pass
 func change_face():
 	$Sir/Content/Face.SetFace(int(param()))
@@ -96,17 +88,16 @@ func show_tutorial(visible: bool):
 func ProcessDialog(delta:float = 0):
 	if wait_user:
 		return
-	if !user_skipped:
-		sum += delta
-		if sum <= 0:
-			return
-		sum -= 0.05
+	sum += delta
+	if sum <= 0:
+		return
 			
 	if tokens.size() == 0 || cur_idx >= tokens.size():
 		return
 		
 	var cur_str:String = tokens[cur_idx]
 	if cur_offset < cur_str.length():
+		if !sound.playing: sound.play(0.05)
 		if user_skipped:
 			label.add_text(cur_str.substr(cur_offset))
 			cur_offset = cur_str.length()
@@ -124,11 +115,9 @@ func _input(event: InputEvent):
 	if event is InputEventKey && event.pressed:
 		match(event.keycode):
 			KEY_Z:
-				if wait_user: sound.play()
 				wait_user = false
 				user_skipped = false
 			KEY_X:
-				sound.stop()
 				user_skipped = true
 
 var sum: float = 0
