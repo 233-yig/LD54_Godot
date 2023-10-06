@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=42 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -29,10 +29,18 @@
 [ext_resource type="AudioStream" uid="uid://c8mqopftmys4i" path="res://resources/audios/LevelBeatOneShot.mp3" id="23_o66us"]
 [ext_resource type="AudioStream" uid="uid://bp0u3hjdb1lww" path="res://resources/audios/Tile flip (Bomb)_01.mp3" id="24_5ev1c"]
 [ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
+[ext_resource type="AudioStream" uid="uid://ytvl31l3gfpd" path="res://resources/audios/commander.mp3" id="26_7el4u"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
 [ext_resource type="Texture2D" uid="uid://c1xs0agxsd2gc" path="res://resources/images/No.54Chatbox.png" id="30_8ssw2"]
+[ext_resource type="AudioStream" uid="uid://b2ywsqgqe4fha" path="res://resources/audios/No.54.mp3" id="31_kcq20"]
 [ext_resource type="Texture2D" uid="uid://bcg1huqfqfcqt" path="res://resources/images/Retry.png" id="34_a7rm1"]
 [ext_resource type="Texture2D" uid="uid://87nmk0t1m1st" path="res://resources/images/MenuGear.png" id="35_cadhv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d52mt"]
+
+[sub_resource type="Curve" id="Curve_neugr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="GDScript" id="GDScript_sys8p"]
 script/source = "extends TextureRect
@@ -64,6 +72,14 @@ levels = Array[Resource("res://gdscripts/level_data.gd")]([ExtResource("3_sap3j"
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_kp43f")
 autoplay = true
+
+[node name="FlipSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("20_i25if")
+
+[node name="FlagSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(576, 324)
+stream = ExtResource("21_b7l44")
 
 [node name="Bg" type="TextureRect" parent="."]
 layout_mode = 1
@@ -167,13 +183,18 @@ pivot_offset = Vector2(30, 40)
 texture = ExtResource("10_gg6j1")
 expand_mode = 1
 
-[node name="FlipSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(576, 324)
-stream = ExtResource("20_i25if")
-
-[node name="FlagSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(576, 324)
-stream = ExtResource("21_b7l44")
+[node name="LoseEffect" type="CPUParticles2D" parent="."]
+scale = Vector2(0.905, 0.905)
+emitting = false
+amount = 1
+lifetime = 5.0
+one_shot = true
+texture = SubResource("NoiseTexture2D_d52mt")
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector2(0, 0)
+scale_amount_max = 515.68
+scale_amount_curve = SubResource("Curve_neugr")
 
 [node name="GameUI" type="Control" parent="."]
 layout_mode = 1
@@ -201,6 +222,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/Sir"]
+position = Vector2(0, 880)
+stream = ExtResource("26_7el4u")
+
 [node name="Content" type="HBoxContainer" parent="GameUI/Sir"]
 custom_minimum_size = Vector2(800, 200)
 layout_mode = 1
@@ -212,8 +237,6 @@ offset_top = -200.0
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
-
-[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/Sir/Content"]
 
 [node name="Face" type="TextureRect" parent="GameUI/Sir/Content"]
 custom_minimum_size = Vector2(200, 200)
@@ -252,6 +275,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/No_54"]
+position = Vector2(818, 905)
+stream = ExtResource("31_kcq20")
+
 [node name="Content" type="VBoxContainer" parent="GameUI/No_54"]
 layout_mode = 1
 anchors_preset = 3
@@ -264,9 +291,6 @@ offset_top = -608.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
-
-[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/No_54/Content"]
-position = Vector2(-902, 433)
 
 [node name="Box" type="TextureRect" parent="GameUI/No_54/Content"]
 layout_mode = 2
@@ -335,7 +359,7 @@ label_settings = SubResource("LabelSettings_vnipu")
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="GameUI/Status/Flips"]
-custom_minimum_size = Vector2(102, 100)
+custom_minimum_size = Vector2(102, 50)
 layout_mode = 2
 texture = ExtResource("10_gg6j1")
 stretch_mode = 5

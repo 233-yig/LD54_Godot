@@ -31,7 +31,7 @@ func action():
 var wait_user: bool = false
 var user_skipped: bool = false
 @onready var label: RichTextLabel = $Sir/Content/Box/Label
-
+@onready var sound: AudioStreamPlayer2D = $Sir/Sound
 func noop():
 	pass
 func append():
@@ -62,11 +62,17 @@ func speaker_a():
 	$No_54/Content/Box.visible = false
 	label = $Sir/Content/Box/Label
 	label.clear()
-	pass
+
+	sound.stop()
+	sound = $Sir/Sound
 func speaker_b():
 	$No_54/Content/Box.visible = true
 	label = $No_54/Content/Box/Wrap/Label
 	label.clear()
+	
+	sound.stop()
+	sound = $No_54/Sound
+
 	pass
 func change_face():
 	$Sir/Content/Face.SetFace(int(param()))
@@ -81,10 +87,12 @@ func finish_game():
 func exit_game():
 	return_lobby.emit(false)
 func show_menu(visible: bool):
+	block_game.emit(visible)
 	$Menu.visible = visible
 func show_tutorial(visible: bool):
 	$Menu.visible = !visible
 	$Tutorial.visible = visible
+	
 func ProcessDialog(delta:float = 0):
 	if wait_user:
 		return
@@ -99,6 +107,7 @@ func ProcessDialog(delta:float = 0):
 		
 	var cur_str:String = tokens[cur_idx]
 	if cur_offset < cur_str.length():
+		sound.play()
 		if user_skipped:
 			label.add_text(cur_str.substr(cur_offset))
 			cur_offset = cur_str.length()
@@ -125,8 +134,7 @@ func _input(event: InputEvent):
 #					return
 #				dialog_open = !dialog_open
 #				toggle_dialog()
-	elif event is InputEventMouseButton && event.pressed:
-		wait_user = false
+
 var sum: float = 0
 func _process(delta):
 	ProcessDialog(delta)
