@@ -33,11 +33,10 @@ func flag(pos: Vector2i):
 	elif ret == $MainGame/GameBoard.OpResult_Lose:
 		$GameUI.SetDialog(cur_level.lose_dialog)
 
-var interactable: bool = true
-func _ready():
+var interact_lock: int = 0
+func _enter_tree():
 	$GameUI.return_lobby.connect(func(win):
-		if win:
-			add_sibling(preload("res://scenes/transition/fin_game.tscn").instantiate())
+		if win: add_sibling(preload("res://scenes/transition/fin_game.tscn").instantiate())
 		add_sibling(preload("res://scenes/entry/lobby.tscn").instantiate())
 		queue_free()
 	)
@@ -45,20 +44,19 @@ func _ready():
 		$MainGame/GameBoard.debug(open)
 	)
 	$GameUI.block_game.connect(func(pause: bool): 
-		interactable = !pause
+		interact_lock-=1
 	)
 	$GameUI.load_level.connect(InitializeLevel)
 	$GameUI.reset_game.connect(StartLevel)
 	InitializeLevel(0)
-	request_ready()
 	
 func _input(event):
 	if !event is InputEventMouseButton:
 		return
-	$ClickEffect.visible = interactable && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	$ClickEffect.visible = interact_lock==0 && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	$ClickEffect.position = get_global_mouse_position()
 
-	if !interactable:
+	if interact_lock!=0:
 		return
 	if event.pressed:
 		return
@@ -74,7 +72,7 @@ func _input(event):
 var sum: float
 func _process(delta):
 	sum += delta
-	$MainGame/Cursor.visible = interactable
+	$MainGame/Cursor.visible = interact_lock==0
 	$MainGame/Cursor.position = $MainGame.get_local_mouse_position().clamp(
 		Vector2(0,0),
 		$MainGame.custom_minimum_size

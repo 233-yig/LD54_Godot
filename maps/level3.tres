@@ -53,8 +53,7 @@ Go get rest, No.54.
 
 @speaker_b@
 Yes, sir. 
-@user_confirm@
-@finish_game@"
+@user_confirm@@pause@0@@finish_game@"
 mapStr = "eeeee
 eeeee
 eeeee

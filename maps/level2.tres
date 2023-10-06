@@ -45,7 +45,7 @@ win_dialog = "@win_effect@@pause@1@
 @speaker_a@@change_face@0@
 Good job. Let’s move on.
 @user_confirm@
-@speaker_a@ @change_level@2@"
+@speaker_a@@pause@0@@change_level@2@"
 mapStr = "eeee
 eeee
 eeee

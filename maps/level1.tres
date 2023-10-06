@@ -147,10 +147,11 @@ How cat-astrophic!
 When it's too difficult for you to continue, you can reset this area and pull out the tutorial in the upper right corner of your panel.
 @
 @pause@0@"
-win_dialog = "@win_effect@@pause@1@
+win_dialog = "@pause@1@@win_effect@
 @speaker_a@@change_face@0@Well done. Are you ready to proceed? @user_confirm@
 @speaker_b@Yes, sir. I’m no scaredy kitty. @user_confirm@
-@speaker_a@ @change_level@1@"
+@speaker_a@@pause@0@@change_level@1@
+"
 mapStr = "eee
 e2e
 e11"
