@@ -9,7 +9,7 @@ mineCount = 2
 maxFlips = 4
 start_dialog = "@pause@1@
 @speaker_a@@change_face@0@
-No.54, are you ready to begin your first quantum capture simulation? @append
+No.54, are you ready to begin your first quantumine capture simulation? @append
 @
 [color=yellow](Press[Z] to confirm, Press[X] to skip)[/color]
 @
@@ -24,7 +24,7 @@ As I said before, the real thing could be extremely dangerous. Everything here i
 @user_confirm@
 
 @speaker_a@
-Quantumines are dangerous quantum matters. They appear to be randomch and unstable before we find them.
+Quantumines are dangerous quantum matters. They appear to be random and unstable before we find them.
 @user_confirm@
 
 @speaker_a@

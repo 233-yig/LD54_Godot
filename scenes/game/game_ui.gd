@@ -41,7 +41,7 @@ func debug():
 func pause():
 	var paused: bool = int(param())
 	block_game.emit(paused)
-	$Blocker.visible = paused
+	$Icons/Retry.mouse_filter = MOUSE_FILTER_IGNORE if paused else MOUSE_FILTER_STOP
 
 func reset_map():
 	reset_game.emit()
