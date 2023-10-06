@@ -6,5 +6,6 @@
 [resource]
 frames = 2
 frame_0/texture = ExtResource("1_y7axu")
+frame_0/duration = 3.0
 frame_1/texture = ExtResource("2_ok5mc")
 frame_1/duration = 0.25

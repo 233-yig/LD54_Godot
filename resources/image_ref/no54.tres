@@ -4,7 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://duykhalgymyca" path="res://resources/images/No.54_blink.png" id="2_vtdo1"]
 
 [resource]
-frames = 2
+frames = 6
 frame_0/texture = ExtResource("1_i4uxe")
+frame_0/duration = 2.0
 frame_1/texture = ExtResource("2_vtdo1")
 frame_1/duration = 0.25
+frame_2/texture = ExtResource("1_i4uxe")
+frame_2/duration = 5.0
+frame_3/texture = ExtResource("2_vtdo1")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("1_i4uxe")
+frame_4/duration = 0.2
+frame_5/texture = ExtResource("2_vtdo1")
+frame_5/duration = 0.1

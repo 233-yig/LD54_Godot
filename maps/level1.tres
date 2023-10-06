@@ -9,7 +9,10 @@ mineCount = 2
 maxFlips = 4
 start_dialog = "@pause@1@
 @speaker_a@@change_face@0@
-No.54, are you ready to begin your first quantum capture simulation? @append@(Press[Z] to confirm, Press[X] to skip)@
+No.54, are you ready to begin your first quantum capture simulation? @append
+@
+[color=yellow](Press[Z] to confirm, Press[X] to skip)[/color]
+@
 @user_confirm@
 
 @speaker_b@
@@ -33,7 +36,7 @@ Yes, sir. The detector in my paws and the locater in my pocket.
 @user_confirm@
 
 @speaker_a@
-Good. Once you use your flipaw to open a safe space on the ground of the quantum planet, the detector will reveal a number on that space @append@(Mouse: left click)@. And that number indicates? 
+Good. Once you use your flipaw to open a safe space on the ground of the quantum planet, the detector will reveal a number on that space @append@[color=yellow](Mouse: left click)[/color]@. And that number indicates?
 @user_confirm@
 
 @speaker_b@
@@ -77,7 +80,7 @@ It’s locater. Use it wisely. If you place your locater at the wrong spot, you 
 @user_confirm@
 
 @speaker_b@
-Yes, sir. I will place it only when there has to be a quantumine. @append@(Mouse: Right click)@
+Yes, sir. I will place it only when there has to be a quantumine. @append@[color=yellow](Mouse: Right click)[/color]@
 @user_confirm@
 
 @speaker_a@

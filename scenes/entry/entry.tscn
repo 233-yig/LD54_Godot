@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://lnivnkqgp34l"]
+[gd_scene load_steps=3 format=3 uid="uid://lnivnkqgp34l"]
+
+[sub_resource type="Theme" id="Theme_07vk6"]
+default_font_size = 30
 
 [sub_resource type="GDScript" id="GDScript_aipl6"]
 script/source = "extends Control
@@ -14,4 +17,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_07vk6")
 script = SubResource("GDScript_aipl6")

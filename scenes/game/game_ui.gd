@@ -60,13 +60,13 @@ func speaker_a():
 	sound = $Sir/Sound
 func speaker_b():
 	$No_54/Content/Box.visible = true
-	label = $No_54/Content/Box/Wrap/Label
+	label = $No_54/Content/Box/Label
 	label.clear()
 	
 	sound = $No_54/Sound
 	pass
 func change_face():
-	$Sir/Content/Face.SetFace(int(param()))
+	$Sir/Content/Wrap/Face.SetFace(int(param()))
 
 func win_effect():
 	$WinSound.play()

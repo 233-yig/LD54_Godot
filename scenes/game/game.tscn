@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=40 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
 [ext_resource type="AudioStream" uid="uid://ytvl31l3gfpd" path="res://resources/audios/commander.mp3" id="26_7el4u"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
-[ext_resource type="Texture2D" uid="uid://c1xs0agxsd2gc" path="res://resources/images/No.54Chatbox.png" id="30_8ssw2"]
 [ext_resource type="AudioStream" uid="uid://b2ywsqgqe4fha" path="res://resources/audios/No.54.mp3" id="31_kcq20"]
 [ext_resource type="Texture2D" uid="uid://bcg1huqfqfcqt" path="res://resources/images/Retry.png" id="34_a7rm1"]
 [ext_resource type="Texture2D" uid="uid://87nmk0t1m1st" path="res://resources/images/MenuGear.png" id="35_cadhv"]
@@ -223,7 +222,6 @@ position = Vector2(0, 880)
 stream = ExtResource("26_7el4u")
 
 [node name="Content" type="HBoxContainer" parent="GameUI/Sir"]
-custom_minimum_size = Vector2(800, 200)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -234,9 +232,19 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 1
 
-[node name="Face" type="TextureRect" parent="GameUI/Sir/Content"]
-custom_minimum_size = Vector2(200, 200)
+[node name="Wrap" type="Control" parent="GameUI/Sir/Content"]
+custom_minimum_size = Vector2(290, 225)
 layout_mode = 2
+
+[node name="Face" type="TextureRect" parent="GameUI/Sir/Content/Wrap"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("20_i6nf1")
 expand_mode = 2
 stretch_mode = 5
@@ -282,38 +290,29 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -608.0
+offset_left = -400.0
+offset_top = -908.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="Box" type="TextureRect" parent="GameUI/No_54/Content"]
+[node name="Box" type="ColorRect" parent="GameUI/No_54/Content"]
+custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("30_8ssw2")
-expand_mode = 2
-stretch_mode = 4
+color = Color(0, 0, 0, 0.764706)
 
-[node name="Wrap" type="Control" parent="GameUI/No_54/Content/Box"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 10.0
-offset_right = -20.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Content/Box/Wrap"]
+[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Content/Box"]
 z_as_relative = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
@@ -321,14 +320,14 @@ fit_content = true
 scroll_active = false
 
 [node name="Face" type="TextureRect" parent="GameUI/No_54/Content"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 texture = ExtResource("25_18vis")
-expand_mode = 2
+expand_mode = 4
 stretch_mode = 5
 
 [node name="Placeholder" type="TextureRect" parent="GameUI/No_54/Content"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(0, 225)
 layout_mode = 2
 texture = ExtResource("13_pe0fq")
 expand_mode = 1
@@ -370,16 +369,21 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -200.0
+offset_bottom = 135.0
 grow_horizontal = 0
+alignment = 1
 
 [node name="Retry" type="TextureButton" parent="GameUI/Icons"]
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 texture_normal = ExtResource("34_a7rm1")
 
 [node name="Menu" type="TextureButton" parent="GameUI/Icons"]
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 texture_normal = ExtResource("35_cadhv")
 
 [node name="Tutorial" type="ColorRect" parent="GameUI"]
@@ -410,7 +414,15 @@ offset_right = -25.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Hello world!"
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "1. Left click to open a quantum space. Right click to place a locator.
+2. The number on a quantum space indicates how many quantumines around it.
+3. There are three states of a hidden quantum space:
+[color=green][S][/color]: Safe. There is definitely no quantumine.
+[color=yellow][?][/color]: Undetermined. It’s safe if there are no other hidden safe spaces. It’s quantumine if there are hidden safe spaces. 
+[color=red][M][/color]: Mine. There must be a quantumine.
+4. Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so."
 
 [node name="Close" type="Button" parent="GameUI/Tutorial"]
 layout_mode = 1
