@@ -19,13 +19,13 @@ func action():
 		return
 	call(tokens[cur_idx])
 
-var dialog_open
-@onready var tween: Tween = create_tween().set_parallel()
-func toggle_dialog():
-	tween.kill()
-	tween = create_tween().set_parallel()
-	tween.tween_property($No_54,"position:x", 0 if dialog_open else 200, 0.5)
-	tween.tween_property($Sir,"position:y", 0 if dialog_open else 200, 0.5)
+#var dialog_open
+#@onready var tween: Tween = create_tween().set_parallel()
+#func toggle_dialog():
+#	tween.kill()
+#	tween = create_tween().set_parallel()
+#	tween.tween_property($No_54,"position:x", 0 if dialog_open else 200, 0.5)
+#	tween.tween_property($Sir,"position:y", 0 if dialog_open else 200, 0.5)
 
 #begin dialog scripts
 var wait_user: bool = false
@@ -48,8 +48,8 @@ func debug():
 func pause():
 	var paused:bool = int(param())
 	block_game.emit(paused)
-	dialog_open = paused
-	toggle_dialog()
+#	dialog_open = paused
+#	toggle_dialog()
 func reset_map():
 	reset_game.emit()
 func change_level():
@@ -65,9 +65,8 @@ func speaker_a():
 	pass
 func speaker_b():
 	$No_54/Content/Box.visible = true
-	label = $No_54/Content/Box/Label
+	label = $No_54/Content/Box/Wrap/Label
 	label.clear()
-	label.append_text("[center][/center]")
 	pass
 func change_face():
 	$Sir/Content/Face.SetFace(int(param()))
@@ -77,8 +76,15 @@ func win_effect():
 func lose_effect():
 	$LoseSound.play()
 func finish_game():
-	return_lobby.emit()
+	return_lobby.emit(true)
 #end dialog scripts
+func exit_game():
+	return_lobby.emit(false)
+func show_menu(visible: bool):
+	$Menu.visible = visible
+func show_tutorial(visible: bool):
+	$Menu.visible = !visible
+	$Tutorial.visible = visible
 func ProcessDialog(delta:float = 0):
 	if wait_user:
 		return
@@ -114,11 +120,11 @@ func _input(event: InputEvent):
 				user_skipped = false
 			KEY_X:
 				user_skipped = true
-			KEY_C:
-				if(tween.is_running()):
-					return
-				dialog_open = !dialog_open
-				toggle_dialog()
+#			KEY_C:
+#				if(tween.is_running()):
+#					return
+#				dialog_open = !dialog_open
+#				toggle_dialog()
 	elif event is InputEventMouseButton && event.pressed:
 		wait_user = false
 var sum: float = 0

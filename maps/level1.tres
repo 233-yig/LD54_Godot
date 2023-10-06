@@ -81,7 +81,7 @@ Yes, sir. I will place it only when there has to be a quantumine. @append@(Mouse
 @user_confirm@
 
 @speaker_a@
-It’s good that we also know the total number of quantumines in a discovered area. so we will give you exactly enough locators for every mission. Right now, we have 2 quantumines to capture. It’s also shown on the top left corner of your panel.
+It’s good that we also know the total number of quantumines in a discovered area. so we will give you exactly enough locators for every mission. Right now, we have 2 quantumines to capture. It’s also shown in the upper left corner of your panel.
 @user_confirm@
 
 @speaker_b@
@@ -119,18 +119,8 @@ Yes, sir.
 @user_confirm@
 
 @speaker_a@
-You can pull out the tutorial any time down here.@append@(Press [C])@
-Left click to open a quantum space. Right click to place a locator.
-The number on a quantum space indicates how many quantumines around it.
-There are three states of a hidden quantum space:
-@append@[color=green]
-[S][/color]@: Safe. There is definitely no quantumine.
-@append@[color=yellow]
-[?][/color]@: Undetermined. It’s safe if there are no other hidden safe spaces. It’s a quantumine if there are hidden safe spaces. 
-@append@[color=red]
-[M][/color]@: Mine. There must be a quantumine
-@user_confirm@.
-Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so.
+When it's too difficult for you to continue, you can reset this area and pull out the tutorial in the upper right corner of your panel.  
+@user_confirm@
 
 @pause@0@
 @debug@0@
@@ -154,14 +144,7 @@ How cat-astrophic!
 @reset_map@
 @speaker_a@@change_face@2@
 @append@
-You can pull out the tutorial any time down here.(Press [C])
-Left click to open a quantum space. Right click to place a locator.
-The number on a quantum space indicates how many quantumines around it.
-There are three states of a hidden quantum space:
-[color=green][S][/color]: Safe. There is definitely no quantumine.
-[color=yellow][?][/color]: Undetermined. It’s safe if there are no other hidden safe spaces. It’s a quantumine if there are hidden safe spaces. 
-[color=red][M][/color]: Mine. There must be a quantumine.
-Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so.
+When it's too difficult for you to continue, you can reset this area and pull out the tutorial in the upper right corner of your panel.
 @
 @pause@0@"
 win_dialog = "@win_effect@@pause@1@

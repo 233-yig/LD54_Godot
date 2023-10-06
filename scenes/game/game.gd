@@ -35,8 +35,9 @@ func flag(pos: Vector2i):
 
 var interactable: bool = true
 func _ready():
-	$GameUI.return_lobby.connect(func():
-		add_sibling(preload("res://scenes/transition/fin_game.tscn").instantiate())
+	$GameUI.return_lobby.connect(func(win):
+		if win:
+			add_sibling(preload("res://scenes/transition/fin_game.tscn").instantiate())
 		add_sibling(preload("res://scenes/entry/lobby.tscn").instantiate())
 		queue_free()
 	)
@@ -48,8 +49,9 @@ func _ready():
 	)
 	$GameUI.load_level.connect(InitializeLevel)
 	$GameUI.reset_game.connect(StartLevel)
-
 	InitializeLevel(0)
+	request_ready()
+	
 func _input(event):
 	if !event is InputEventMouseButton:
 		return
