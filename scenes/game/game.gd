@@ -21,6 +21,7 @@ func flip(pos: Vector2i):
 	if ret == $MainGame/GameBoard.OpResult_Success:
 		$FlipSound.play()
 	if ret == $MainGame/GameBoard.OpResult_Lose:
+		$GameUI/LoseEffect.position = $GameUI.get_local_mouse_position()
 		$GameUI.SetDialog(cur_level.lose_dialog)
 func flag(pos: Vector2i):
 	var ret = $MainGame/GameBoard.flag(pos);
@@ -31,10 +32,11 @@ func flag(pos: Vector2i):
 		$FlagSound.play()	
 		$GameUI.SetDialog(cur_level.win_dialog)
 	elif ret == $MainGame/GameBoard.OpResult_Lose:
+		$GameUI/LoseEffect.position = $GameUI.get_local_mouse_position()
 		$GameUI.SetDialog(cur_level.lose_dialog)
 
 var interact_lock: int = 0
-func _enter_tree():
+func _ready():
 	$GameUI.return_lobby.connect(func(win):
 		if win: add_sibling(preload("res://scenes/transition/fin_game.tscn").instantiate())
 		add_sibling(preload("res://scenes/entry/lobby.tscn").instantiate())
@@ -44,11 +46,13 @@ func _enter_tree():
 		$MainGame/GameBoard.debug(open)
 	)
 	$GameUI.block_game.connect(func(pause: bool): 
-		interact_lock-=1
+		if pause: interact_lock += 1
+		if !pause: interact_lock -= 1
 	)
 	$GameUI.load_level.connect(InitializeLevel)
 	$GameUI.reset_game.connect(StartLevel)
 	InitializeLevel(0)
+	request_ready()
 	
 func _input(event):
 	if !event is InputEventMouseButton:

@@ -19,13 +19,6 @@ func action():
 		return
 	call(tokens[cur_idx])
 
-#var dialog_open
-#@onready var tween: Tween = create_tween().set_parallel()
-#func toggle_dialog():
-#	tween.kill()
-#	tween = create_tween().set_parallel()
-#	tween.tween_property($No_54,"position:x", 0 if dialog_open else 200, 0.5)
-#	tween.tween_property($Sir,"position:y", 0 if dialog_open else 200, 0.5)
 
 #begin dialog scripts
 var wait_user: bool = false
@@ -51,11 +44,11 @@ func pause():
 	var paused: bool = int(param())
 	block_game.emit(paused)
 	$Blocker.visible = paused
-#	dialog_open = paused
-#	toggle_dialog()
+
 func reset_map():
 	sound.stop()
 	reset_game.emit()
+	$LoseEffect/Image.custom_minimum_size = Vector2()
 func change_level():
 	sound.stop()
 	var level_idx: String = param();
@@ -87,6 +80,7 @@ func win_effect():
 	$WinSound.play()
 func lose_effect():
 	$LoseSound.play()
+	create_tween().tween_property($LoseEffect/Image,"custom_minimum_size", Vector2(4000,4000), 1).set_ease(Tween.EASE_OUT)
 func finish_game():
 	return_lobby.emit(true)
 #end dialog scripts
@@ -136,11 +130,6 @@ func _input(event: InputEvent):
 			KEY_X:
 				sound.stop()
 				user_skipped = true
-#			KEY_C:
-#				if(tween.is_running()):
-#					return
-#				dialog_open = !dialog_open
-#				toggle_dialog()
 
 var sum: float = 0
 func _process(delta):
