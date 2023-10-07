@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=45 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -18,12 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="13_pe0fq"]
 [ext_resource type="Texture2D" uid="uid://dcuj0u8fto3ln" path="res://resources/images/locator.png" id="14_4wdwn"]
 [ext_resource type="Texture2D" uid="uid://b10pnj4tvxcmc" path="res://resources/images/[S].png" id="15_1f6i2"]
+[ext_resource type="Texture2D" uid="uid://srenbr3jpqu0" path="res://resources/images/5.png" id="15_t55xp"]
+[ext_resource type="Texture2D" uid="uid://bwftimg6srfut" path="res://resources/images/6.png" id="16_m48qv"]
 [ext_resource type="Texture2D" uid="uid://ddb42ubv0ce3b" path="res://resources/images/[M].png" id="16_vpqs8"]
+[ext_resource type="Texture2D" uid="uid://vnh57daistl7" path="res://resources/images/7.png" id="17_vs5bf"]
+[ext_resource type="Texture2D" uid="uid://dnf3146dqorol" path="res://resources/images/8.png" id="18_hgrcn"]
 [ext_resource type="Script" path="res://scenes/game/game_ui.gd" id="19_lailm"]
 [ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="20_i6nf1"]
 [ext_resource type="AudioStream" uid="uid://bphfjo11r10qx" path="res://resources/audios/TileFlip_Safe_V2_01.mp3" id="20_i25if"]
 [ext_resource type="AudioStream" uid="uid://b57w8axv4bkka" path="res://resources/audios/Flag Placed.mp3" id="21_b7l44"]
 [ext_resource type="Texture2D" uid="uid://dngf8ae7cngci" path="res://resources/images/sir_blackline.png" id="21_gk72c"]
+[ext_resource type="Texture2D" uid="uid://c0r8c2fpkwqko" path="res://resources/images/[W].png" id="22_cm8ax"]
 [ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="22_wwgjv"]
 [ext_resource type="Texture2D" uid="uid://cec4dtugn65lq" path="res://resources/images/quantumineboom.png" id="23_b08kt"]
 [ext_resource type="AudioStream" uid="uid://c8mqopftmys4i" path="res://resources/audios/LevelBeatOneShot.mp3" id="23_o66us"]
@@ -115,13 +120,13 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GameBoard" type="GameBoard" parent="MainGame"]
-tiles = Array[Texture2D]([ExtResource("8_avj7j"), ExtResource("9_gpbyo"), ExtResource("10_n01bf"), ExtResource("11_in3ab"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("13_pe0fq"), ExtResource("14_4wdwn"), ExtResource("15_1f6i2"), ExtResource("13_pe0fq"), ExtResource("16_vpqs8"), ExtResource("26_v3ubx")])
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tiles = Array[Texture2D]([ExtResource("8_avj7j"), ExtResource("9_gpbyo"), ExtResource("10_n01bf"), ExtResource("11_in3ab"), ExtResource("12_3foiy"), ExtResource("15_t55xp"), ExtResource("16_m48qv"), ExtResource("17_vs5bf"), ExtResource("18_hgrcn"), ExtResource("13_pe0fq"), ExtResource("14_4wdwn"), ExtResource("15_1f6i2"), ExtResource("22_cm8ax"), ExtResource("16_vpqs8"), ExtResource("26_v3ubx")])
 
 [node name="Boundary" type="TextureRect" parent="MainGame"]
 texture_filter = 1

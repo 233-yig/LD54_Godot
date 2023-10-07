@@ -3,15 +3,11 @@ extends Control
 
 var cur_level: LevelData
 func StartLevel():
+	$MainGame.custom_minimum_size = Vector2(cur_level.mapSize) * $MainGame/Background.texture.get_size() / 3
 	$MainGame/GameBoard.load_data(cur_level.mapSize, cur_level.mineCount, cur_level.maxFlips, cur_level.mapStr)
 	$GameUI.SetData($MainGame/GameBoard.flag_count(), cur_level.mineCount, $MainGame/GameBoard.flip_count(), cur_level.maxFlips)
 func InitializeLevel(idx: int):
-	if idx < 0 || idx >= levels.size():
-		add_sibling(preload("res://scenes/entry/lobby.tscn").instantiate())
-		queue_free()
-		return
 	cur_level = levels[idx]
-	$MainGame.custom_minimum_size = Vector2(cur_level.mapSize) * $MainGame/Background.texture.get_size() / 3
 	StartLevel()
 	$GameUI.SetDialog(cur_level.start_dialog)
 
@@ -51,7 +47,6 @@ func _ready():
 	)
 	$GameUI.load_level.connect(InitializeLevel)
 	$GameUI.reset_game.connect(StartLevel)
-	InitializeLevel(0)
 	request_ready()
 	
 func _input(event):
