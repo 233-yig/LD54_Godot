@@ -26,13 +26,13 @@
 [ext_resource type="Texture2D" uid="uid://dngf8ae7cngci" path="res://resources/images/sir_blackline.png" id="21_gk72c"]
 [ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="22_wwgjv"]
 [ext_resource type="Texture2D" uid="uid://cec4dtugn65lq" path="res://resources/images/quantumineboom.png" id="23_b08kt"]
-[ext_resource type="Texture2D" uid="uid://x1fl1pgwwphk" path="res://resources/images/sir_blink.png" id="23_ecj27"]
 [ext_resource type="AudioStream" uid="uid://c8mqopftmys4i" path="res://resources/audios/LevelBeatOneShot.mp3" id="23_o66us"]
 [ext_resource type="AudioStream" uid="uid://bp0u3hjdb1lww" path="res://resources/audios/Tile flip (Bomb)_01.mp3" id="24_5ev1c"]
 [ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
 [ext_resource type="AudioStream" uid="uid://ytvl31l3gfpd" path="res://resources/audios/commander.mp3" id="26_7el4u"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
 [ext_resource type="AudioStream" uid="uid://b2ywsqgqe4fha" path="res://resources/audios/No.54.mp3" id="31_kcq20"]
+[ext_resource type="Texture2D" uid="uid://bd7yw4quq60oj" path="res://resources/images/sir_blink_static.png" id="31_taegs"]
 [ext_resource type="Texture2D" uid="uid://bcg1huqfqfcqt" path="res://resources/images/Retry.png" id="34_a7rm1"]
 [ext_resource type="Texture2D" uid="uid://87nmk0t1m1st" path="res://resources/images/MenuGear.png" id="35_cadhv"]
 
@@ -249,7 +249,7 @@ texture = ExtResource("20_i6nf1")
 expand_mode = 2
 stretch_mode = 5
 script = SubResource("GDScript_sys8p")
-face = Array[Texture2D]([ExtResource("20_i6nf1"), ExtResource("21_gk72c"), ExtResource("22_wwgjv"), ExtResource("23_ecj27")])
+face = Array[Texture2D]([ExtResource("20_i6nf1"), ExtResource("21_gk72c"), ExtResource("22_wwgjv"), ExtResource("31_taegs")])
 
 [node name="Box" type="ColorRect" parent="GameUI/Sir/Content"]
 layout_mode = 2
