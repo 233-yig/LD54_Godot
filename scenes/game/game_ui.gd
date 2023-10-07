@@ -118,7 +118,7 @@ func _input(event: InputEvent):
 				wait_user = false
 				user_skipped = false
 			KEY_X:
-				user_skipped = true
+				if !wait_user: user_skipped = true
 
 var sum: float = 0
 func _process(delta):

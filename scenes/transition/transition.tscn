@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c4sockfcqomsl"]
 
 [ext_resource type="Texture2D" uid="uid://dhc32wkkojv2k" path="res://resources/images/transition background.png" id="1_txken"]
-[ext_resource type="Texture2D" uid="uid://duykhalgymyca" path="res://resources/images/No.54_blink.png" id="2_7tc44"]
+[ext_resource type="Texture2D" uid="uid://k1ald4jb55l8" path="res://resources/images/No.54_blink_static.png" id="2_pbxc7"]
 
 [sub_resource type="GDScript" id="GDScript_2dhje"]
 script/source = "extends Timer
@@ -49,6 +49,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(150, 225)
-texture = ExtResource("2_7tc44")
+texture = ExtResource("2_pbxc7")
 expand_mode = 1
 script = SubResource("GDScript_rj1cl")

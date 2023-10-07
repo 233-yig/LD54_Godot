@@ -134,7 +134,7 @@ lose_dialog = "@pause@1@
 *sigh. Prepare for the lifelike boom.
 @user_confirm@
 
-@lose_effect@@delay@5@
+@lose_effect@@delay@3@
 
 @speaker_b@
 How cat-astrophic!
@@ -150,7 +150,7 @@ How cat-astrophic!
 When it's too difficult for you to continue, you can reset this area and pull out the tutorial in the upper right corner of your panel.
 @
 @pause@0@"
-win_dialog = "@pause@1@@win_effect@
+win_dialog = "@win_effect@@pause@1@
 @speaker_a@@change_face@0@Well done. Are you ready to proceed? @user_confirm@
 @speaker_b@Yes, sir. I’m no scaredy kitty. @user_confirm@
 @speaker_a@@pause@0@@change_level@1@

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=40 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://wiprfp4c4gfu" path="res://maps/level2.tres" id="4_t1ipk"]
 [ext_resource type="Texture2D" uid="uid://bcdnby3uml38l" path="res://resources/images/mapbox.png" id="5_3ddht"]
 [ext_resource type="Texture2D" uid="uid://c40jdluwnp4xy" path="res://resources/image_ref/bg.tres" id="5_cmv56"]
+[ext_resource type="AudioStream" uid="uid://d5c8mwfuagr6" path="res://resources/audios/Quantumine Capture OST.mp3" id="5_kp43f"]
 [ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
 [ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="8_avj7j"]
 [ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="9_gpbyo"]
@@ -62,6 +63,10 @@ grow_vertical = 2
 script = ExtResource("1_g1p6r")
 levels = Array[Resource("res://gdscripts/level_data.gd")]([ExtResource("3_sap3j"), ExtResource("4_t1ipk"), ExtResource("5_sl4aa")])
 
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kp43f")
+autoplay = true
+
 [node name="FlipSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(576, 324)
 stream = ExtResource("20_i25if")
@@ -110,13 +115,13 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
 [node name="GameBoard" type="GameBoard" parent="MainGame"]
-tiles = Array[Texture2D]([ExtResource("8_avj7j"), ExtResource("9_gpbyo"), ExtResource("10_n01bf"), ExtResource("11_in3ab"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("13_pe0fq"), ExtResource("14_4wdwn"), ExtResource("15_1f6i2"), ExtResource("13_pe0fq"), ExtResource("16_vpqs8"), ExtResource("26_v3ubx")])
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+tiles = Array[Texture2D]([ExtResource("8_avj7j"), ExtResource("9_gpbyo"), ExtResource("10_n01bf"), ExtResource("11_in3ab"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("12_3foiy"), ExtResource("13_pe0fq"), ExtResource("14_4wdwn"), ExtResource("15_1f6i2"), ExtResource("13_pe0fq"), ExtResource("16_vpqs8"), ExtResource("26_v3ubx")])
 
 [node name="Boundary" type="TextureRect" parent="MainGame"]
 texture_filter = 1
