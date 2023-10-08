@@ -116,16 +116,13 @@ func ProcessDialog(delta:float = 0):
 	
 	if user_skipped:
 		ProcessDialog()
-func _input(event: InputEvent):
-	if event is InputEventKey && event.pressed:
-		match(event.keycode):
-			KEY_Z:
-				wait_user = false
-				user_skipped = false
-			KEY_X:
-				stall_time = 0
-				if !wait_user: user_skipped = true
-
+func ConfirmDialog(event: InputEvent):
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		wait_user = false
+		user_skipped = false
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT:
+		stall_time = 0
+		if !wait_user: user_skipped = true
 var sum: float = 0
 func _process(delta):
 	sum += delta

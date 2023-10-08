@@ -18,18 +18,24 @@ func InitializeSandbox(level: LevelData, debug_on: bool):
 	StartLevel()
 	$GameUI.SetDialog(cur_level.start_dialog)
 
-func GameOp(ret):
+func Flip(ret):
 	$GameUI.SetData($Center/MainGame/GameBoard.flag_count(), cur_level.mineCount, $Center/MainGame/GameBoard.flip_count(), cur_level.maxFlips)
 	if ret == $Center/MainGame/GameBoard.OpResult_Success:
-		$FlagSound.play()	
+		$FlipSound.play()	
+	elif ret == $Center/MainGame/GameBoard.OpResult_Lose:
+		$GameUI.SetFailPos()
+		$GameUI.SetDialog(cur_level.lose_dialog)
+
+func Flag(ret):
+	$GameUI.SetData($Center/MainGame/GameBoard.flag_count(), cur_level.mineCount, $Center/MainGame/GameBoard.flip_count(), cur_level.maxFlips)
+	if ret == $Center/MainGame/GameBoard.OpResult_Success:
+		$FlagSound.play()
 	elif ret == $Center/MainGame/GameBoard.OpResult_Win:
-		$FlagSound.play()	
+		$FlagSound.play()
 		$GameUI.SetDialog(cur_level.win_dialog)
 	elif ret == $Center/MainGame/GameBoard.OpResult_Lose:
 		$GameUI.SetFailPos()
 		$GameUI.SetDialog(cur_level.lose_dialog)
-	elif ret == $Center/MainGame/GameBoard.OpResult_Invalid:
-		pass
 	
 func _ready():
 	$GameUI.return_lobby.connect(func(win):
@@ -42,5 +48,7 @@ func _ready():
 	)
 	$GameUI.load_level.connect(InitializeLevel)
 	$GameUI.reset_game.connect(StartLevel)
-	$Center/MainGame.game_op.connect(GameOp)
+	$Center/MainGame.on_flip.connect(Flip)
+	$Center/MainGame.on_flag.connect(Flag)
+	$Center/MainGame.on_revert.connect(Flip)
 	request_ready()

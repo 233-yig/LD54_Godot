@@ -67,39 +67,6 @@ layout_mode = 2
 texture = ExtResource("4_r4kdo")
 expand_mode = 1
 
-[node name="RetryBtn" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_top = 40.0
-offset_right = -140.0
-grow_horizontal = 0
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("5_n5owc")
-
-[node name="Blocker" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(1000, 1000)
-
-[node name="MenuBtn" type="TextureButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_top = 40.0
-offset_right = -40.0
-grow_horizontal = 0
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("6_0jqwl")
-
 [node name="Status" type="VBoxContainer" parent="."]
 layout_mode = 1
 offset_right = 72.0
@@ -259,6 +226,43 @@ layout_mode = 2
 texture = ExtResource("16_iqspo")
 expand_mode = 1
 
+[node name="RetryBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -214.0
+offset_top = 40.0
+offset_right = -140.0
+offset_bottom = 114.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("5_n5owc")
+
+[node name="Blocker" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1000, 1000)
+
+[node name="MenuBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -114.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 114.0
+grow_horizontal = 0
+size_flags_horizontal = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("6_0jqwl")
+
 [node name="Tutorial" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -398,6 +402,7 @@ texture = ExtResource("2_lyyta")
 expand_mode = 1
 
 [connection signal="pressed" from="RetryBtn" to="." method="reset_map"]
+[connection signal="gui_input" from="Blocker" to="." method="ConfirmDialog"]
 [connection signal="pressed" from="MenuBtn" to="." method="show_menu" binds= [true]]
 [connection signal="pressed" from="Tutorial/TutorialBg/Close" to="." method="show_tutorial" binds= [false]]
 [connection signal="pressed" from="Menu/MenuBg/Layout/Tutorial" to="." method="show_tutorial" binds= [true]]

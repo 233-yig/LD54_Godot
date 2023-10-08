@@ -8,24 +8,40 @@ mapSize = Vector2i(0, 0)
 mineCount = 0
 maxFlips = 0
 start_dialog = "@pause@1@
-@speaker_a@@change_face@2@
-@pause@0@"
+@speaker_a@@change_face@0@
+The corporation has provided us with this place to do training as many times as we want as our energy can sustain a long time here. This updated simulation system is highly customized to deal with different kinds of situations on the quantum planet. 
+@user_confirm@
+
+@speaker_a@
+We can also test what could be a possible area we may encounter. If the values we enter for the program do not work, then the corresponding situation will never happen on the real quantum planet. Then, we need to restart the system and test other values.
+@user_confirm@
+
+@speaker_b@
+Yes, sir.
+@user_confirm@
+
+@speaker_a@@pause@0@
+
+"
 lose_dialog = "@pause@1@
 @speaker_a@@change_face@3@
-
+I’ll reset this area after you take a look at why you failed.
 @user_confirm@
-@lose_effect@
-@delay@3@
+
+@lose_effect@@delay@1@
 
 @reset_map@
-@change_face@2@
-@pause@0@"
+@change_face@0@@pause@0@"
 win_dialog = "@win_effect@@pause@1@
-@speaker_a@@change_face@3@
-You’re doing great in today’s simulation, No.54. Please go get some rest and prepare for the next training.
+@speaker_a@@change_face@0@
+Nice work.
+@user_confirm@
+
+@speaker_b@
+Meowhoo!
 @user_confirm@
 
 @reset_map@
-@change_face@2@
+@speaker_a@@change_face@2@
 @pause@0@"
 mapStr = ""
