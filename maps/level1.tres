@@ -11,7 +11,7 @@ start_dialog = "@debug@0@@pause@1@
 @speaker_a@@change_face@0@
 No.54, are you ready to begin your first quantumine capture simulation? @append
 @
-[color=yellow](Press[Z] to confirm, Press[X] to skip)[/color]
+[color=yellow](Press[Z]/Left click to confirm, Press[X]/Left click to skip)[/color]
 @
 @user_confirm@
 
@@ -100,9 +100,11 @@ Are we able to close any spaces on our own?
 @user_confirm@
 
 @speaker_a@
-No. This planet’s rule does not allow us to do that, and even our most developed technology cannot figure it out
+You can close a space only when it’s under one of the two following conditions: 1. It’s a “0.” 2. All of the quantumines around it have been located. For example, if it’s “2,” you can only close it after you locate the two quantumines around it.
 @user_confirm@
-. The discovery of the quantum planet is too new for us, and doing research on this planet is a tough task due to its mysterious power. That’s why we need to bring more quantum samples back. 
+
+@speaker_a@
+The discovery of the quantum planet is too new for us, and doing research on this planet is a tough task due to its mysterious power. That’s why we need to bring more quantum samples back. 
 @user_confirm@
 
 @speaker_b@

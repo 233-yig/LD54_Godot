@@ -8,6 +8,7 @@ mapSize = Vector2i(0, 0)
 mineCount = 0
 maxFlips = 0
 start_dialog = "@pause@1@
+
 @speaker_a@@change_face@0@
 The corporation has provided us with this place to do training as many times as we want as our energy can sustain a long time here. This updated simulation system is highly customized to deal with different kinds of situations on the quantum planet. 
 @user_confirm@
