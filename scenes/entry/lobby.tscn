@@ -56,20 +56,20 @@ text = "Sandbox Mode"
 
 [node name="Form" type="ColorRect" parent="."]
 visible = false
-custom_minimum_size = Vector2(600, 400)
+custom_minimum_size = Vector2(450, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
+offset_left = -225.0
 offset_top = -150.0
-offset_right = 150.0
+offset_right = 225.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.764706)
+color = Color(0.25098, 0.25098, 0.25098, 0.764706)
 
 [node name="SandboxInfo" type="VBoxContainer" parent="Form"]
 layout_mode = 1
@@ -132,28 +132,42 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="x" type="LineEdit" parent="Form/SandboxInfo/Main/Values/MapSize"]
+[node name="x" type="SpinBox" parent="Form/SandboxInfo/Main/Values/MapSize"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
+min_value = 3.0
+max_value = 8.0
+value = 3.0
+rounded = true
 alignment = 1
 
-[node name="y" type="LineEdit" parent="Form/SandboxInfo/Main/Values/MapSize"]
+[node name="y" type="SpinBox" parent="Form/SandboxInfo/Main/Values/MapSize"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 6
+min_value = 3.0
+max_value = 8.0
+value = 3.0
+rounded = true
 alignment = 1
 
-[node name="Flips" type="LineEdit" parent="Form/SandboxInfo/Main/Values"]
+[node name="Flips" type="SpinBox" parent="Form/SandboxInfo/Main/Values"]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 11
+size_flags_vertical = 6
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+rounded = true
+allow_greater = true
 alignment = 1
 
-[node name="Mines" type="LineEdit" parent="Form/SandboxInfo/Main/Values"]
+[node name="Mines" type="SpinBox" parent="Form/SandboxInfo/Main/Values"]
 layout_mode = 2
-size_flags_horizontal = 5
-size_flags_vertical = 11
+size_flags_vertical = 6
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+rounded = true
+allow_greater = true
 alignment = 1
 
 [node name="Debug" type="CheckBox" parent="Form/SandboxInfo"]

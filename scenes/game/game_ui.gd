@@ -2,9 +2,20 @@ extends Control
 
 signal return_lobby
 signal switch_debug
-signal block_game
 signal reset_game
 signal load_level
+
+
+
+#begin UI handler
+func exit_game():
+	return_lobby.emit(false)
+func show_menu(open: bool):
+	$Menu.visible = open
+func show_tutorial(open: bool):
+	$Menu.visible = !open
+	$Tutorial.visible = open
+#end UI handler
 
 var tokens: PackedStringArray;
 var cur_idx: int = 0
@@ -18,8 +29,6 @@ func action():
 	if cur_idx >= tokens.size():
 		return
 	call(tokens[cur_idx])
-
-
 #begin dialog scripts
 var wait_user: bool = false
 var user_skipped: bool = false
@@ -30,8 +39,7 @@ func noop():
 func append():
 	label.append_text(param())
 func delay():
-	user_skipped = false
-	sum = -float(param())
+	stall_time = float(param())
 func user_confirm():
 	wait_user = true
 	pass
@@ -40,12 +48,12 @@ func debug():
 	switch_debug.emit(int(param()))
 func pause():
 	var paused: bool = int(param())
-	block_game.emit(paused)
-	$Icons/Retry.mouse_filter = MOUSE_FILTER_IGNORE if paused else MOUSE_FILTER_STOP
+	$Blocker.visible = paused
+	$Cursor.visible = !paused
 
 func reset_map():
 	reset_game.emit()
-	$LoseEffect/Image.custom_minimum_size = Vector2()
+	$LoseEffect.visible = false
 func change_level():
 	var level_idx: String = param();
 	var transition = preload("res://scenes/transition/transition.tscn").instantiate()
@@ -72,27 +80,24 @@ func win_effect():
 	$WinSound.play()
 func lose_effect():
 	$LoseSound.play()
-	create_tween().tween_property($LoseEffect/Image,"custom_minimum_size", Vector2(4000,4000), 1).set_ease(Tween.EASE_OUT)
+	$LoseEffect.visible = true
+	create_tween().tween_property(
+		$LoseEffect/Image,
+		"custom_minimum_size",
+		Vector2(4000,4000),
+		0.5
+	).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT)
 func finish_game():
 	return_lobby.emit(true)
 #end dialog scripts
-func exit_game():
-	return_lobby.emit(false)
-func show_menu(visible: bool):
-	block_game.emit(visible)
-	$Menu.visible = visible
-func show_tutorial(visible: bool):
-	$Menu.visible = !visible
-	$Tutorial.visible = visible
-	
+var stall_time: float = 0
 func ProcessDialog(delta:float = 0):
 	if wait_user:
 		return
-	sum += delta
-	if sum <= 0:
-		return
-			
 	if tokens.size() == 0 || cur_idx >= tokens.size():
+		return
+	stall_time -= delta
+	if stall_time > 0:
 		return
 		
 	var cur_str:String = tokens[cur_idx]
@@ -110,7 +115,7 @@ func ProcessDialog(delta:float = 0):
 		cur_idx += 1
 	
 	if user_skipped:
-		ProcessDialog()	
+		ProcessDialog()
 func _input(event: InputEvent):
 	if event is InputEventKey && event.pressed:
 		match(event.keycode):
@@ -118,13 +123,17 @@ func _input(event: InputEvent):
 				wait_user = false
 				user_skipped = false
 			KEY_X:
+				stall_time = 0
 				if !wait_user: user_skipped = true
 
 var sum: float = 0
 func _process(delta):
+	sum += delta
+	$Cursor.position = get_local_mouse_position() - $Cursor.pivot_offset + Vector2(0, 10 * sin(sum))
 	ProcessDialog(delta)
 
-
+func SetFailPos():
+	$LoseEffect.position = get_local_mouse_position()
 func SetDialog(content: String):
 	tokens = content.split("@")
 	for i in range(tokens.size()):

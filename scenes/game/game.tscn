@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cept4tjtt7ud4"]
+[gd_scene load_steps=29 format=3 uid="uid://cept4tjtt7ud4"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_g1p6r"]
 [ext_resource type="Resource" uid="uid://bh42bi8uu7j3a" path="res://maps/level1.tres" id="3_sap3j"]
@@ -9,12 +9,12 @@
 [ext_resource type="AudioStream" uid="uid://d5c8mwfuagr6" path="res://resources/audios/Quantumine Capture OST.mp3" id="5_kp43f"]
 [ext_resource type="Resource" uid="uid://bw4vo0iq83lop" path="res://maps/level3.tres" id="5_sl4aa"]
 [ext_resource type="Texture2D" uid="uid://5pfdr80wunpb" path="res://resources/images/0.png" id="8_avj7j"]
+[ext_resource type="Script" path="res://scenes/game/MainGame.gd" id="9_bjjsd"]
 [ext_resource type="Texture2D" uid="uid://bxj1lbx03brvx" path="res://resources/images/1.png" id="9_gpbyo"]
 [ext_resource type="Texture2D" uid="uid://bogifq4giuhen" path="res://resources/images/flipaw.png" id="10_gg6j1"]
 [ext_resource type="Texture2D" uid="uid://b3qe3ipeqfg3w" path="res://resources/images/2.png" id="10_n01bf"]
 [ext_resource type="Texture2D" uid="uid://d2c0n6m5tlt6w" path="res://resources/images/3.png" id="11_in3ab"]
 [ext_resource type="Texture2D" uid="uid://bin0k53r8odcj" path="res://resources/images/4.png" id="12_3foiy"]
-[ext_resource type="Texture2D" uid="uid://cj4q5wa3kuwm1" path="res://resources/images/No.54.png" id="12_r1682"]
 [ext_resource type="Texture2D" uid="uid://7lnkkluern7d" path="res://resources/images/transparent.png" id="13_pe0fq"]
 [ext_resource type="Texture2D" uid="uid://dcuj0u8fto3ln" path="res://resources/images/locator.png" id="14_4wdwn"]
 [ext_resource type="Texture2D" uid="uid://b10pnj4tvxcmc" path="res://resources/images/[S].png" id="15_1f6i2"]
@@ -23,40 +23,11 @@
 [ext_resource type="Texture2D" uid="uid://ddb42ubv0ce3b" path="res://resources/images/[M].png" id="16_vpqs8"]
 [ext_resource type="Texture2D" uid="uid://vnh57daistl7" path="res://resources/images/7.png" id="17_vs5bf"]
 [ext_resource type="Texture2D" uid="uid://dnf3146dqorol" path="res://resources/images/8.png" id="18_hgrcn"]
-[ext_resource type="Script" path="res://scenes/game/game_ui.gd" id="19_lailm"]
-[ext_resource type="Texture2D" uid="uid://bbk0rkjfa5gw6" path="res://resources/image_ref/sir_anim1.tres" id="20_i6nf1"]
 [ext_resource type="AudioStream" uid="uid://bphfjo11r10qx" path="res://resources/audios/TileFlip_Safe_V2_01.mp3" id="20_i25if"]
 [ext_resource type="AudioStream" uid="uid://b57w8axv4bkka" path="res://resources/audios/Flag Placed.mp3" id="21_b7l44"]
-[ext_resource type="Texture2D" uid="uid://dngf8ae7cngci" path="res://resources/images/sir_blackline.png" id="21_gk72c"]
 [ext_resource type="Texture2D" uid="uid://c0r8c2fpkwqko" path="res://resources/images/[W].png" id="22_cm8ax"]
-[ext_resource type="Texture2D" uid="uid://tb8khkbgbnxj" path="res://resources/image_ref/sir_anim2.tres" id="22_wwgjv"]
-[ext_resource type="Texture2D" uid="uid://cec4dtugn65lq" path="res://resources/images/quantumineboom.png" id="23_b08kt"]
-[ext_resource type="AudioStream" uid="uid://c8mqopftmys4i" path="res://resources/audios/LevelBeatOneShot.mp3" id="23_o66us"]
-[ext_resource type="AudioStream" uid="uid://bp0u3hjdb1lww" path="res://resources/audios/Tile flip (Bomb)_01.mp3" id="24_5ev1c"]
-[ext_resource type="Texture2D" uid="uid://bnb07llv843rg" path="res://resources/image_ref/no54.tres" id="25_18vis"]
-[ext_resource type="AudioStream" uid="uid://ytvl31l3gfpd" path="res://resources/audios/commander.mp3" id="26_7el4u"]
 [ext_resource type="Texture2D" uid="uid://dfnd58u3t3chi" path="res://resources/images/quantumine.png" id="26_v3ubx"]
-[ext_resource type="AudioStream" uid="uid://b2ywsqgqe4fha" path="res://resources/audios/No.54.mp3" id="31_kcq20"]
-[ext_resource type="Texture2D" uid="uid://bd7yw4quq60oj" path="res://resources/images/sir_blink_static.png" id="31_taegs"]
-[ext_resource type="Texture2D" uid="uid://bcg1huqfqfcqt" path="res://resources/images/Retry.png" id="34_a7rm1"]
-[ext_resource type="Texture2D" uid="uid://87nmk0t1m1st" path="res://resources/images/MenuGear.png" id="35_cadhv"]
-
-[sub_resource type="GDScript" id="GDScript_sys8p"]
-script/source = "extends TextureRect
-
-@export var face: Array[Texture2D]
-func SetFace(idx: int):
-	texture = face[idx]
-"
-
-[sub_resource type="LabelSettings" id="LabelSettings_vnipu"]
-font_size = 25
-
-[sub_resource type="Theme" id="Theme_4x6ie"]
-default_font_size = 30
-
-[sub_resource type="Theme" id="Theme_7841f"]
-default_font_size = 30
+[ext_resource type="PackedScene" uid="uid://cuqtrd4w72cgp" path="res://scenes/game/game_ui.tscn" id="29_18ax8"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -91,7 +62,7 @@ texture = ExtResource("5_cmv56")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="MainGame" type="Control" parent="."]
+[node name="Center" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,16 +71,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+use_top_left = true
 
-[node name="Background" type="NinePatchRect" parent="MainGame"]
+[node name="MainGame" type="NinePatchRect" parent="Center"]
 texture_filter = 1
 texture_repeat = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+mouse_filter = 0
 texture = ExtResource("4_jkekv")
 region_rect = Rect2(0, 0, 306, 300)
 patch_margin_left = 102
@@ -118,383 +86,50 @@ patch_margin_right = 102
 patch_margin_bottom = 100
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("9_bjjsd")
 
-[node name="GameBoard" type="GameBoard" parent="MainGame"]
+[node name="GameBoard" type="GameBoard" parent="Center/MainGame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -204.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 tiles = Array[Texture2D]([ExtResource("8_avj7j"), ExtResource("9_gpbyo"), ExtResource("10_n01bf"), ExtResource("11_in3ab"), ExtResource("12_3foiy"), ExtResource("15_t55xp"), ExtResource("16_m48qv"), ExtResource("17_vs5bf"), ExtResource("18_hgrcn"), ExtResource("13_pe0fq"), ExtResource("14_4wdwn"), ExtResource("15_1f6i2"), ExtResource("22_cm8ax"), ExtResource("16_vpqs8"), ExtResource("26_v3ubx")])
 
-[node name="Boundary" type="TextureRect" parent="MainGame"]
+[node name="Boundary" type="TextureRect" parent="Center/MainGame"]
 texture_filter = 1
 texture_repeat = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_3ddht")
 expand_mode = 1
 
-[node name="Cursor" type="TextureRect" parent="MainGame"]
+[node name="ClickEffect" type="TextureRect" parent="Center/MainGame"]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+custom_minimum_size = Vector2(80, 62)
+layout_mode = 2
+offset_left = 102.0
+offset_top = 100.0
+offset_right = 102.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(30, 40)
-texture = ExtResource("12_r1682")
-expand_mode = 1
-
-[node name="ClickEffect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -60.0
-offset_right = -10.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset = Vector2(30, 40)
+pivot_offset = Vector2(40, 31)
 texture = ExtResource("10_gg6j1")
 expand_mode = 1
 
-[node name="GameUI" type="Control" parent="."]
+[node name="GameUI" parent="." instance=ExtResource("29_18ax8")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("19_lailm")
-
-[node name="WinSound" type="AudioStreamPlayer2D" parent="GameUI"]
-position = Vector2(576, 324)
-stream = ExtResource("23_o66us")
-
-[node name="LoseSound" type="AudioStreamPlayer2D" parent="GameUI"]
-position = Vector2(576, 324)
-stream = ExtResource("24_5ev1c")
-
-[node name="LoseEffect" type="CenterContainer" parent="GameUI"]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 500.0
-offset_right = 500.0
-offset_bottom = 500.0
-pivot_offset = Vector2(1000, 1000)
-use_top_left = true
-
-[node name="Image" type="TextureRect" parent="GameUI/LoseEffect"]
-layout_mode = 2
-texture = ExtResource("23_b08kt")
-expand_mode = 1
-
-[node name="Sir" type="Control" parent="GameUI"]
-custom_minimum_size = Vector2(800, 200)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/Sir"]
-position = Vector2(0, 880)
-stream = ExtResource("26_7el4u")
-
-[node name="Content" type="HBoxContainer" parent="GameUI/Sir"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -200.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="Wrap" type="Control" parent="GameUI/Sir/Content"]
-custom_minimum_size = Vector2(290, 225)
-layout_mode = 2
-
-[node name="Face" type="TextureRect" parent="GameUI/Sir/Content/Wrap"]
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("20_i6nf1")
-expand_mode = 2
-stretch_mode = 5
-script = SubResource("GDScript_sys8p")
-face = Array[Texture2D]([ExtResource("20_i6nf1"), ExtResource("21_gk72c"), ExtResource("22_wwgjv"), ExtResource("31_taegs")])
-
-[node name="Box" type="ColorRect" parent="GameUI/Sir/Content"]
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0, 0, 0, 0.764706)
-
-[node name="Label" type="RichTextLabel" parent="GameUI/Sir/Content/Box"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = -25.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="No_54" type="Control" parent="GameUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sound" type="AudioStreamPlayer2D" parent="GameUI/No_54"]
-position = Vector2(818, 905)
-stream = ExtResource("31_kcq20")
-
-[node name="Content" type="VBoxContainer" parent="GameUI/No_54"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -400.0
-offset_top = -908.0
-grow_horizontal = 0
-grow_vertical = 0
-alignment = 2
-
-[node name="Box" type="ColorRect" parent="GameUI/No_54/Content"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 0.764706)
-
-[node name="Label" type="RichTextLabel" parent="GameUI/No_54/Content/Box"]
-z_as_relative = false
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 25.0
-offset_right = -25.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 2
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="Face" type="TextureRect" parent="GameUI/No_54/Content"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-texture = ExtResource("25_18vis")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Placeholder" type="TextureRect" parent="GameUI/No_54/Content"]
-custom_minimum_size = Vector2(0, 225)
-layout_mode = 2
-texture = ExtResource("13_pe0fq")
-expand_mode = 1
-
-[node name="Status" type="VBoxContainer" parent="GameUI"]
-layout_mode = 1
-offset_right = 72.0
-offset_bottom = 56.0
-
-[node name="Mines" type="HBoxContainer" parent="GameUI/Status"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="GameUI/Status/Mines"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-texture = ExtResource("26_v3ubx")
-
-[node name="Label" type="Label" parent="GameUI/Status/Mines"]
-layout_mode = 2
-text = "5/10"
-label_settings = SubResource("LabelSettings_vnipu")
-
-[node name="Flips" type="HBoxContainer" parent="GameUI/Status"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="GameUI/Status/Flips"]
-custom_minimum_size = Vector2(102, 50)
-layout_mode = 2
-texture = ExtResource("10_gg6j1")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="GameUI/Status/Flips"]
-layout_mode = 2
-text = "5/10"
-label_settings = SubResource("LabelSettings_vnipu")
-
-[node name="Icons" type="HBoxContainer" parent="GameUI"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -200.0
-offset_bottom = 135.0
-grow_horizontal = 0
-alignment = 1
-
-[node name="Retry" type="TextureButton" parent="GameUI/Icons"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("34_a7rm1")
-
-[node name="Menu" type="TextureButton" parent="GameUI/Icons"]
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("35_cadhv")
-
-[node name="Tutorial" type="ColorRect" parent="GameUI"]
-visible = false
-custom_minimum_size = Vector2(800, 600)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -300.0
-offset_right = 400.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.764706)
-
-[node name="Label" type="RichTextLabel" parent="GameUI/Tutorial"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 25.0
-offset_top = 50.0
-offset_right = -25.0
-offset_bottom = -25.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 28
-bbcode_enabled = true
-text = "1. Left click to open a quantum space. Right click to place a locator.
-2. The number on a quantum space indicates how many quantumines around it.
-3. There are three states of a hidden quantum space:
-[color=green][S][/color]: Safe. There is definitely no quantumine.
-[color=yellow][?][/color]: Undetermined. It’s safe if there are no other hidden safe spaces. It’s quantumine if there are hidden safe spaces. 
-[color=red][M][/color]: Mine. There must be a quantumine.
-4. Open a quantum space only when you make sure it’s safe. Place a locator only when you make sure there’s a quantumine. Don’t guess until you’re forced to do so."
-
-[node name="Close" type="Button" parent="GameUI/Tutorial"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_bottom = 31.0
-grow_horizontal = 0
-theme = SubResource("Theme_4x6ie")
-text = "X"
-flat = true
-
-[node name="Menu" type="ColorRect" parent="GameUI"]
-visible = false
-custom_minimum_size = Vector2(200, 250)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -125.0
-offset_right = 100.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.764706)
-
-[node name="Layout" type="VBoxContainer" parent="GameUI/Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_7841f")
-alignment = 1
-
-[node name="Tutorial" type="Button" parent="GameUI/Menu/Layout"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Tutorial"
-flat = true
-
-[node name="Menu" type="Button" parent="GameUI/Menu/Layout"]
-layout_mode = 2
-size_flags_vertical = 0
-text = "Menu"
-flat = true
-
-[node name="Close" type="Button" parent="GameUI/Menu"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -27.0
-offset_bottom = 50.0
-grow_horizontal = 0
-theme = SubResource("Theme_4x6ie")
-text = "X"
-flat = true
-
-[connection signal="pressed" from="GameUI/Icons/Retry" to="GameUI" method="reset_map"]
-[connection signal="pressed" from="GameUI/Icons/Menu" to="GameUI" method="show_menu" binds= [true]]
-[connection signal="pressed" from="GameUI/Tutorial/Close" to="GameUI" method="show_tutorial" binds= [false]]
-[connection signal="pressed" from="GameUI/Menu/Layout/Tutorial" to="GameUI" method="show_tutorial" binds= [true]]
-[connection signal="pressed" from="GameUI/Menu/Layout/Menu" to="GameUI" method="exit_game"]
-[connection signal="pressed" from="GameUI/Menu/Close" to="GameUI" method="show_menu" binds= [false]]

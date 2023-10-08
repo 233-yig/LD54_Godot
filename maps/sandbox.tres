@@ -25,15 +25,7 @@ win_dialog = "@win_effect@@pause@1@
 You’re doing great in today’s simulation, No.54. Please go get some rest and prepare for the next training.
 @user_confirm@
 
-@speaker_b@
-I can go a little further, sir. Look at me now.
-@user_confirm@
-
-@speaker_a@@change_face@1@
-Go get rest, No.54.
-@user_confirm@
-
-@speaker_b@
-Yes, sir. 
-@user_confirm@@pause@0@@finish_game@"
+@reset_map@
+@change_face@2@
+@pause@0@"
 mapStr = ""
