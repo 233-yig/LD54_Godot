@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://dkysrvn683og8"]
+
+[ext_resource type="Script" path="res://gdscripts/level_data.gd" id="1_itn8q"]
+
+[resource]
+script = ExtResource("1_itn8q")
+mapSize = Vector2i(0, 0)
+mineCount = 0
+maxFlips = 0
+start_dialog = "@pause@1@
+@speaker_a@@change_face@2@
+@pause@0@"
+lose_dialog = "@pause@1@
+@speaker_a@@change_face@3@
+
+@user_confirm@
+@lose_effect@
+@delay@3@
+
+@reset_map@
+@change_face@2@
+@pause@0@"
+win_dialog = "@win_effect@@pause@1@
+@speaker_a@@change_face@3@
+You’re doing great in today’s simulation, No.54. Please go get some rest and prepare for the next training.
+@user_confirm@
+
+@speaker_b@
+I can go a little further, sir. Look at me now.
+@user_confirm@
+
+@speaker_a@@change_face@1@
+Go get rest, No.54.
+@user_confirm@
+
+@speaker_b@
+Yes, sir. 
+@user_confirm@@pause@0@@finish_game@"
+mapStr = ""

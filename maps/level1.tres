@@ -7,7 +7,7 @@ script = ExtResource("1_ne0jh")
 mapSize = Vector2i(3, 3)
 mineCount = 2
 maxFlips = 4
-start_dialog = "@pause@1@
+start_dialog = "@debug@0@@pause@1@
 @speaker_a@@change_face@0@
 No.54, are you ready to begin your first quantumine capture simulation? @append
 @

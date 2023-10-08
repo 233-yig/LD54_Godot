@@ -10,7 +10,12 @@ func InitializeLevel(idx: int):
 	cur_level = levels[idx]
 	StartLevel()
 	$GameUI.SetDialog(cur_level.start_dialog)
-
+func InitializeSandbox(level: LevelData, debug):
+	$MainGame/GameBoard.debug(debug)
+	cur_level = level
+	StartLevel()
+	$GameUI.SetDialog(cur_level.start_dialog)
+	
 func flip(pos: Vector2i):
 	var ret = $MainGame/GameBoard.flip(pos)
 	$GameUI.SetData($MainGame/GameBoard.flag_count(), cur_level.mineCount, $MainGame/GameBoard.flip_count(), cur_level.maxFlips)
