@@ -9,7 +9,7 @@ mineCount = 0
 maxFlips = 0
 start_dialog = "@pause@1@
 
-@speaker_a@@change_face@0@
+@speaker_a@@change_face@2@
 The corporation has provided us with this place to do training as many times as we want as our energy can sustain a long time here. This updated simulation system is highly customized to deal with different kinds of situations on the quantum planet. 
 @user_confirm@
 
@@ -25,16 +25,15 @@ Yes, sir.
 
 "
 lose_dialog = "@pause@1@
-@speaker_a@@change_face@3@
+@speaker_a@@change_face@2@
 I’ll reset this area after you take a look at why you failed.
 @user_confirm@
 
 @lose_effect@@delay@1@
 
-@reset_map@
-@change_face@0@@pause@0@"
+@speaker_a@@reset_map@@pause@0@"
 win_dialog = "@win_effect@@pause@1@
-@speaker_a@@change_face@0@
+@speaker_a@@change_face@2@
 Nice work.
 @user_confirm@
 
@@ -43,6 +42,5 @@ Meowhoo!
 @user_confirm@
 
 @reset_map@
-@speaker_a@@change_face@2@
-@pause@0@"
+@speaker_a@@pause@0@"
 mapStr = ""

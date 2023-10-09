@@ -4,7 +4,7 @@ extends Control
 var cur_level: LevelData
 func StartLevel():
 	$Center/MainGame.custom_minimum_size = Vector2(cur_level.mapSize) * $Center/MainGame.texture.get_size() / 3
-	var map_scale: int = 5.0 / max(cur_level.mapSize.x, cur_level.mapSize.y)
+	var map_scale: float = 5.0 / max(cur_level.mapSize.x, cur_level.mapSize.y)
 	if map_scale < 1: $Center.scale = Vector2(map_scale, map_scale)
 	$Center/MainGame/GameBoard.load_data(cur_level.mapSize, cur_level.mineCount, cur_level.maxFlips, cur_level.mapStr)
 	$GameUI.SetData($Center/MainGame/GameBoard.flag_count(), cur_level.mineCount, $Center/MainGame/GameBoard.flip_count(), cur_level.maxFlips)
