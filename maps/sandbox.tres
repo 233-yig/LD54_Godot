@@ -25,7 +25,7 @@ Yes, sir.
 
 "
 lose_dialog = "@pause@1@
-@speaker_a@@change_face@2@
+@speaker_a@
 I’ll reset this area after you take a look at why you failed.
 @user_confirm@
 
@@ -33,7 +33,7 @@ I’ll reset this area after you take a look at why you failed.
 
 @speaker_a@@reset_map@@pause@0@"
 win_dialog = "@win_effect@@pause@1@
-@speaker_a@@change_face@2@
+@speaker_a@
 Nice work.
 @user_confirm@
 
